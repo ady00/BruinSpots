@@ -207,7 +207,7 @@ export default function FacilityMap({
 
         const flyToOptions = {
           center: [data.coordinates.longitude, data.coordinates.latitude] as [number, number],
-          zoom: DEFAULT_ZOOM + 2,
+          zoom: DEFAULT_ZOOM + 1.2,
           pitch: DEFAULT_PITCH,
           bearing: DEFAULT_BEARING,
           essential: true,

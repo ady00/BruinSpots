@@ -71,7 +71,9 @@ export const FacilityAccordion: React.FC<FacilityAccordionProps> = ({
   const facilityId = `${idPrefix}-${facility.id}`;
 
   return (
-    <AccordionItem
+
+    <div>
+      <AccordionItem
       value={facilityId}
       key={facilityId}
       ref={(el) => {
@@ -109,7 +111,7 @@ export const FacilityAccordion: React.FC<FacilityAccordionProps> = ({
           </div>
         </AccordionTrigger>
       </div>
-      <AccordionContent className="bg-background/95 backdrop-blur-sm">
+      <AccordionContent className="bg-background/95 backdrop-blur-sm rounded-b-lg">
         {!facility.isOpen ? (
           <div className="px-4 py-2 text-sm text-muted-foreground backdrop-blur-sm rounded-md mx-2 mb-2">
             {facilityType === FacilityType.LIBRARY ? (
@@ -145,6 +147,9 @@ export const FacilityAccordion: React.FC<FacilityAccordionProps> = ({
         )}
       </AccordionContent>
     </AccordionItem>
+    </div>
+    
+    
   );
 };
 
@@ -366,7 +371,7 @@ const AcademicRoomsAccordion: React.FC<AcademicRoomsAccordionProps> = ({
                     />
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="pt-0 pb-1 pl-1 pr-4">
+                <AccordionContent className="pt-0 pb-1 pl-1 pr-4 bg-background/95 backdrop-blur-sm rounded-b-lg">
                   {/* Conditionally render loader only when this specific room is expanded */}
                   {isRoomExpanded ? (
                     <AcademicRoomDetailLoader

@@ -179,6 +179,17 @@ export interface MapProps {
   onMapLoaded?: () => void;
 }
 
+export interface LeftSidebarProps {
+  facilityData: FacilityStatus | null;
+  expandedItems: string[];
+  setExpandedItems: React.Dispatch<React.SetStateAction<string[]>>;
+  showModal: boolean;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  isFetching: boolean;
+  scrollToId: string | null;
+  setScrollToId: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
 export interface MarkerData {
   id: string;
   name: string;

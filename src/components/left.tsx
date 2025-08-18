@@ -28,15 +28,7 @@ import {
 import FacilityAccordion from "@/components/FacilityAccordion";
 import DateTimeButton from "@/components/DateTimeButton";
 import DateTimeDisplay from "@/components/DateTimeDisplay";
-
-interface LeftSidebarProps {
-  facilityData: FacilityStatus | null;
-  showModal: boolean;
-  setShowModal: Dispatch<SetStateAction<boolean>>;
-  expandedItems: string[];
-  setExpandedItems: Dispatch<SetStateAction<string[]>>;
-  isFetching: boolean;
-}
+import { LeftSidebarProps } from "@/types";
 
 const LeftSidebar: React.FC<LeftSidebarProps> = ({
   facilityData,
@@ -45,6 +37,8 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({
   expandedItems,
   setExpandedItems,
   isFetching,
+  scrollToId,
+  setScrollToId,
 }) => {
   const accordionRefs = useRef<AccordionRefs>({});
   const scrollAreaRef = useRef<HTMLDivElement | null>(null);
@@ -61,6 +55,21 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
   }, [showModal, setShowModal]);
+
+  useEffect(() => {
+    if (scrollToId && showModal) {
+      const element = accordionRefs.current[scrollToId];
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+          setScrollToId(null);
+        }, 150);
+      }
+    }
+  }, [scrollToId, showModal, setScrollToId]);
 
   const scrollToAccordion = useCallback((accordionId: string) => {
     const element = accordionRefs.current[accordionId];
@@ -146,7 +155,7 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({
 
       {/* Modal Content */}
       <div 
-        className={`fixed z-50 bg-background/95 backdrop-blur-sm border border-border/50 rounded-lg shadow-2xl transition-all duration-300 ease-in-out overflow-hidden ${
+        className={`fixed z-50 bg-background backdrop-blur-sm border border-border/50 rounded-lg shadow-2xl transition-all duration-300 ease-in-out overflow-hidden ${
           showModal 
             ? 'translate-y-0 opacity-100' 
             : 'translate-y-full opacity-0 pointer-events-none'

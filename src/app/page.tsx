@@ -36,6 +36,7 @@ const BruinSpotsPage: React.FC = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
+  const [scrollToId, setScrollToId] = useState<string | null>(null);
 
   const [showLoadingScreen, setShowLoadingScreen] = useState(true);
   const [mountLoadingScreen, setMountLoadingScreen] = useState(true);
@@ -91,6 +92,8 @@ const BruinSpotsPage: React.FC = () => {
 
         return getUpdatedAccordionItems(itemId, prevItems);
       });
+      
+      setScrollToId(itemId);
     },
     [],
   );
@@ -148,6 +151,8 @@ const BruinSpotsPage: React.FC = () => {
           showModal={showModal}
           setShowModal={setShowModal}
           isFetching={showFetchingOverlay}
+          scrollToId={scrollToId}
+          setScrollToId={setScrollToId}
         />
       </div>
     </>
