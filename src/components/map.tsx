@@ -131,7 +131,7 @@ export default function FacilityMap({
 
     const createMarkerElement = (data: MarkerData, isMobile: boolean) => {
       const markerEl = document.createElement("div");
-      const markerSize = isMobile ? "8px" : "12px";
+      const markerSize = isMobile ? "15px" : "12px";
       
       markerEl.style.width = markerSize;
       markerEl.style.height = markerSize;
