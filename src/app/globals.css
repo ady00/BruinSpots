@@ -161,6 +161,21 @@ body {
     height: 32px !important;
 }
 
+.maplibregl-popup.popup-dark .maplibregl-popup-content {
+  background-color: rgb(39 39 42); /* zinc-800 */
+  color: white;
+  border-radius: 0.5rem; /* rounded-lg */
+  padding: 6px 10px; /* matches your inline style */
+  border: none; /* remove white border */
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.5); /* optional dark shadow */
+}
+
+/* Remove the default popup tip (the little white triangle) */
+.maplibregl-popup.popup-dark .maplibregl-popup-tip {
+  border-top-color: rgb(39 39 42) !important;
+  border-bottom-color: rgb(39 39 42) !important;
+}
+
 .maplibregl-ctrl-group button .maplibregl-ctrl-icon {
     background-size: 60%;
     opacity: 0.9;

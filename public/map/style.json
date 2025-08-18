@@ -35,12 +35,53 @@
                     {
                         "type": "Feature",
                         "properties": {
+                            "name": "Young Library"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44148976538565,
+                                34.07493392098452
+                            ],
+                            "type": "Point"
+                        }
+                    },
+                    
+                    {
+                        "type": "Feature",
+                        "properties": {
                             "name": "Ackerman Union"
                         },
                         "geometry": {
                             "coordinates": [
                                 -118.44428423211829,
                                 34.07041721768684
+                            ],
+                            "type": "Point"
+                        }
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Biomedical Library"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44244022219476,
+                                34.06674557454046
+                            ],
+                            "type": "Point"
+                        }
+                    },
+                    
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Science and Engineering Library"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44260599157482,
+                                34.06906108700814
                             ],
                             "type": "Point"
                         }
@@ -58,6 +99,20 @@
                             "type": "Point"
                         }
                     },
+                    {
+                                    "type": "Feature",
+                                    "properties": {
+                                        "name": "Music Library"
+                                    },
+                                    "geometry": {
+                                        "coordinates": [
+                                        -118.44039179583316,
+                                        34.070959487193676
+                                        ],
+                                        "type": "Point"
+                                    },
+                                    "id": 26
+                                    },
                         {
                                     "type": "Feature",
                                     "properties": {
