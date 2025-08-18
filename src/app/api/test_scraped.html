@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- iid: 3244 -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://static-assets-us.libcal.com/bootstrap_13/bootstrap3.min.css" rel="stylesheet">
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://static-assets-us.libcal.com/css_808/LibCal_public.min.css" rel="stylesheet">
+    <link href="https://static-assets-us.libcal.com/css_808/print.min.css" rel="stylesheet" media="print">
+
+    <script src="https://static-assets-us.libcal.com/jquery_16/jquery.min.js"></script>
+
+
+    <script src="https://static-assets-us.libcal.com/bootstrap_13/bootstrap3.min.js"></script>
+    <script src="https://static-assets-us.libcal.com/js_808/LibCal_public.min.js"></script>
+    <script>
+        springSpace.dateFormat = "dddd, MMMM D, YYYY";
+    springSpace.dateShortFormat = "dddd, MMMM D, YYYY";
+    springSpace.dayOfWeekFormat = "dddd, MMMM D";
+    springSpace.timeFormat = "h:mma";
+    springSpace.timezone = 'America/Los_Angeles';
+    springSpace.currency = "USD";
+    springSpace.currencySymbol = "$";
+
+    springSpace.language = 'en'; // en
+    springSpace.locale = 'en-US'; // en-US
+
+    springSpace.phpTimeFormat = 'g:ia';
+
+    springSpace.bootstrapAsset = 'https://static-assets-us.libcal.com/bootstrap_13/bootstrap3_16.min.css';
+    springSpace.publicCssAsset = 'https://static-assets-us.libcal.com/css_808/LibCal_public.min.css';
+    springSpace.adminCssAsset = 'https://static-assets-us.libcal.com/css_808/LibCal_admin.min.css';
+    </script>
+    <title>
+        Space Availability - Powell Library
+        -
+        Calendar -
+        UCLA Library
+    </title>
+    <style>
+        #s-lc-public-banner {
+            padding: 0;
+            margin: 0;
+        }
+
+        .s-lc-public-footer {
+            margin: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="https://static-assets-us.libcal.com/fullcalendar_14/fullcalendar.min.css" />
+
+    <style>
+        .s-lc-eq-avail,
+        .label-eq-avail,
+        .s-lc-eq-period-available {
+            background: #14951F none !important;
+            border-color: #14951F !important;
+        }
+
+        .s-lc-eq-avail:hover,
+        .s-lc-eq-period-available:hover {
+            background: #095212 none !important;
+            border-color: #095212 !important;
+        }
+
+        .s-lc-eq-pending,
+        .label-eq-pending,
+        .s-lc-eq-period-pending {
+            background: #F59F16 none !important;
+            border-color: #F59F16 !important;
+        }
+
+        .s-lc-eq-checkout,
+        .s-lc-eq-r-unavailable,
+        .s-lc-eq-r-padding,
+        .label-eq-unavailable,
+        .s-lc-eq-period-booked {
+            background: #C91908 linear-gradient(135deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent) !important;
+            border-color: #C91908 !important;
+        }
+    </style>
+
+    <style>
+        @media (max-width: 768px) {
+            .fc-timeline .fc-cell-text {
+                font-size: 12px !important;
+            }
+        }
+    </style>
+    <link data-n-head="ssr" rel="icon" type="image/x-icon" href="https://www.library.ucla.edu/favicon.ico">
+
+    <style type="text/css">
+        header {
+            background-color: #0B6AB7;
+            margin: 0 auto 16px;
+            padding: 16px;
+        }
+
+        .header-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            margin: 0 auto;
+            max-width: 1170px;
+            width: 100%;
+        }
+
+        .links {
+            flex: 1;
+        }
+
+        .links ul {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .links li {
+            padding: 4px 16px;
+        }
+
+        .links a {
+            color: white;
+            font-size: 16px;
+        }
+
+        .links a:hover,
+        .links a:focus {
+            color: white;
+        }
+    </style>
+
+    <style type="text/css">
+        @import url("https://use.typekit.net/xso3wzv.css");
+
+        .s-lc-public-footer {
+            border-top: 0;
+            background-color: white;
+            padding-bottom: 1rem;
+        }
+
+        #hours_php main,
+        #hours_php .s-lc-header {
+            font-family: 'proxima-nova';
+            font-size: 18px;
+            color: #0F0F0F;
+            margin: 0 auto;
+        }
+
+        #hours_php .s-lc-header {
+            color: #0b6ab7;
+        }
+
+        #hours_php table {
+            border: 0;
+            border-spacing: 0;
+            border-collapse: initial;
+        }
+
+        #hours_php table tr {
+            border-spacing: 0;
+            border-bottom: 2px dotted #dcdcdb;
+        }
+
+        #hours_php table th {
+            background-color: white;
+            color: black;
+        }
+
+        .s-lc-h-bh .btn {
+            font-size: 18px;
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        #hours_php table th,
+        .s-lc-h-head-date {
+            font-size: 18px !important;
+            font-style: normal;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+            text-align: center;
+        }
+
+        .table>thead>tr>th {
+            border-bottom: 0;
+        }
+
+        .table>tbody>tr>td {
+            border-top: 2px dotted #dcdcdb;
+        }
+
+        td:has(.s-lc-time),
+        td:has(.s-lc-closed),
+        td:has(.s-lc-allday),
+        td:has(.s-lc-timetxt),
+        td:has(.no_time) {
+            text-align: center;
+        }
+
+        .s-lc-time,
+        .s-lc-closed,
+        .s-lc-allday,
+        .s-lc-timetxt,
+        .s-lc-h-excep,
+        .s-lc-h-sublocname {
+            font-size: 16px;
+        }
+
+        .s-lc-h-excep {
+            display: block;
+        }
+
+        .s-lc-h-footnote {
+            display: none;
+        }
+
+        #hours_php .s-lc-h-today-h {
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            font-weight: 700;
+        }
+
+        .s-lc-h-loc:nth-last-child(2) .s-lc-h-today {
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        #hours_php .s-lc-h-today-h,
+        .s-lc-h-today,
+        .table-hover>tbody>tr:hover {
+            background-color: #EAF2FB;
+        }
+
+        /* header and footer */
+        table th,
+        .l-header-wrapper,
+        .l-footer-wrapper {
+            background-color: #0b6ab7;
+        }
+
+        #s-lc-app-s1 .radio label {
+            max-width: 90%;
+        }
+
+        .fc-scrollgrid th {
+            color: white;
+            background-color: #0b6ab7;
+        }
+
+        @font-face {
+            font-family: 'ProximaNova';
+            src: url('//s3.amazonaws.com/libapps/sites/705/include/ProximaNova-Light.eot');
+            src: url('//s3.amazonaws.com/libapps/sites/705/include/ProximaNova-Light.eot?#iefix') format('embedded-opentype'), url('//s3.amazonaws.com/libapps/sites/705/include/ProximaNova-Light.woff') format('woff'), url('//s3.amazonaws.com/libapps/sites/705/include/ProximaNova-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'ProximaNova';
+            src: url('//s3.amazonaws.com/libapps/sites/705/include/ProximaNova-Regular.eot');
+            src: url('//s3.amazonaws.com/libapps/sites/705/include/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'), url('//s3.amazonaws.com/libapps/sites/705/include/ProximaNova-Regular.woff') format('woff'), url('//s3.amazonaws.com/libapps/sites/705/include/ProximaNova-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'ProximaNova';
+            src: url('//s3.amazonaws.com/libapps/sites/705/include/ProximaNova-Semibold.eot');
+            src: url('//s3.amazonaws.com/libapps/sites/705/include/ProximaNova-Semibold.eot?#iefix') format('embedded-opentype'), url('//s3.amazonaws.com/libapps/sites/705/include/ProximaNova-Semibold.woff') format('woff'), url('//s3.amazonaws.com/libapps/sites/705/include/ProximaNova-Semibold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+    </style>
+
+
+    <STYLE type="text/css">
+        /*! selected css from http://www.library.ucla.edu/sites/all/themes/uclalib_omega/css/uclalib-omega.normalize.css */
+        body {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+            line-height: initial;
+        }
+
+        a {
+            background: transparent;
+        }
+
+        a:active,
+        a:hover {
+            outline: 0;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 0.67em 0;
+        }
+
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline;
+        }
+
+        sup {
+            top: -0.50em;
+        }
+
+        sub {
+            bottom: -0.25em;
+        }
+
+        /*! manually added by SM */
+        body {
+            line-height: 1.5;
+        }
+
+        #s-lc-rm-tg-tb th,
+        #s-lc-rm-tg-tb td {
+            padding: 0px;
+            font-size: 12px;
+            border-spacing: 0px;
+        }
+
+        a {
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 16px;
+            color: #666;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        table th {
+            font-size: 16px;
+            /*color: #666*/
+            ;
+            font-weight: normal;
+        }
+
+        .s-lib-box .s-lib-box-title {
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        ul,
+        ol {
+            padding-left: 10px;
+            margin-left: 10px;
+        }
+
+        .s-lg-link-list,
+        .s-lg-system-list,
+        .s-lg-rss-list {
+            padding-left: 10px;
+        }
+
+        ul ul,
+        ol ul,
+        ul ol,
+        ol ol {
+            margin-bottom: 0px;
+            margin-left: 20px;
+        }
+
+        .nav-tabs,
+        .nav-pills a {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .btn-info,
+        .btn-info:hover,
+        .btn-info:focus,
+        .btn-info:active {
+            background-color: #3283BE;
+            border-color: #3283BE;
+        }
+
+        .label-info {
+            color: #FFFFFF;
+            background-color: #3283BE;
+            font-size: 1.1em !important;
+        }
+
+        .l-colophon-wrapper {
+            padding: 20px 0;
+        }
+
+        .page_title {
+            color: #3283BE;
+            font-size: 80%;
+            display: none;
+        }
+
+        ul.s-lg-link-list {
+            margin-bottom: 0px;
+        }
+
+        table th th,
+        table td td {
+            text-align: initial;
+        }
+
+        table th,
+        table td {
+            vertical-align: top;
+        }
+
+        /* fix reservation time tables */
+        .lc_rm_b,
+        .lc_rm_u,
+        .lc_rm_a {
+            height: 21px;
+        }
+
+        .lc_rm_hours {
+            height: 18px;
+        }
+    </STYLE>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-32672693-1', 'auto');  ga('send', 'pageview'); 
+    </script>
+
+
+    <!-- Add molecule background, gray header, breadcrumb style -->
+    <style>
+        .s-lg-guide-body,
+        .s-lib-public-body {
+            background: url("//www.library.ucla.edu/sites/all/themes/uclalib_omega/images/mol-bg.jpg") repeat scroll 0px 0px transparent;
+            margin: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .s-lib-header {
+            padding-left: 10px;
+            padding-right: 10px;
+            background: #EFF3F4;
+        }
+
+        #s-lg-guide-main,
+        #s-lib-public-main,
+        #s-lg-tabs-container {
+            padding-left: 10px;
+            padding-right: 10px;
+            background: #FFFFFF;
+        }
+
+        .breadcrumb>li li::before {
+            color: #666;
+            content: "» ";
+        }
+
+        #s-lc-public-bc .breadcrumb li {
+            font-weight: 400;
+            color: #666;
+            font-size: 14px;
+        }
+
+        #s-lc-public-bc .breadcrumb a {
+            font-weight: 400;
+        }
+
+        #s-lg-guide-desc-container {
+            margin-bottom: 10px;
+            padding-top: 0px;
+        }
+
+        #s-lg-guide-description {
+            font-size: 14px;
+        }
+    </style>
+
+    <style type="text/css">
+        /*! extra padding for table heads */
+        table th {
+            padding: 5px 7px;
+        }
+
+        /*! change color of info icocn */
+        .fa-info-circle {
+            color: #3283BE;
+        }
+    </style>
+
+    <style type="text/css">
+        .s-lc-h-head-date {
+            color: #666666;
+            font-size: 14px;
+        }
+
+        /*! suppress breadcrumbs */
+        ol.breadcrumb {
+            display: none;
+        }
+    </style>
+
+    <style type="text/css">
+        body {
+            font-family: "ProximaNova", sans-serif;
+        }
+
+        .dow {
+            color: #FFFFFF;
+        }
+
+        .datepicker-switch,
+        .next,
+        .prev {
+            color: #FFFFFF;
+        }
+
+        .datepicker-switch:hover,
+        .next:hover,
+        .prev:hover {
+            color: #000000;
+        }
+
+        #s-lc-rm-tg-h {
+            color: #FFFFFF;
+        }
+
+        .ui-datepicker-calendar th {
+            color: #FFFFFF;
+        }
+
+        .fa-info-circle {
+            color: #1e4b87;
+        }
+
+        .s-lc-h-w th {
+            color: #FFFFFF;
+        }
+
+        .s-lc-h-head-date {
+            color: inherit;
+        }
+
+        th.s-lc-h-today-h {
+            color: #000000;
+        }
+
+        #s-lc-public-skiplink {
+            display: none;
+        }
+    </style>
+
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('//s3.amazonaws.com/libapps/sites/705/include/icomoon.eot');
+            src: url('//s3.amazonaws.com/libapps/sites/705/include/icomoon.eot#iefix') format('embedded-opentype'), url('//s3.amazonaws.com/libapps/sites/705/include/icomoon.ttf') format('truetype'), url('//s3.amazonaws.com/libapps/sites/705/include/icomoon.woff') format('woff'), url('//s3.amazonaws.com/libapps/sites/705/include/icomoon.svg#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        [class^="icon-"],
+        [class*=" icon-"] {
+            /* use !important to prevent issues with browser extensions that change fonts */
+            font-family: 'icomoon' !important;
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .icon-help:before {
+            content: "\e607";
+        }
+    </style>
+</head>
+
+<body id="equip_" class="s-lc-public s-lc-public-page-5">
+
+    <a class="s-lc-skiplink alert-info" href="/r/accessible?lid=4361&gid=7748">
+        Alternate page for screen reader Users </a>
+
+    <a id="s-lc-public-skiplink" class="s-lc-skiplink alert-info" href="#s-lc-public-title-area">Skip to Main
+        Content</a>
+
+    <div id="s-lc-public-cust-header" role="banner">
+        <header>
+            <div class="header-container">
+                <div data-v-01ae1c36="" class="logo"><a data-v-f725762c="" data-v-01ae1c36=""
+                        href="https://www.library.ucla.edu" aria-current="page"
+                        class="smart-link is-router-link nuxt-link-exact-active nuxt-link-active"
+                        aria-label="UCLA Library home page"><svg data-v-01ae1c36="" width="115" height="22"
+                            viewBox="0 0 115 22" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="svg__logo-library svg logo-ucla" alt="UCLA Library logo blue">
+                            <path
+                                d="M64.223 6.914h2.43v9.954h5.63v2.028h-8.06V6.914zM73.14 6.914h2.281V8.96h-2.28V6.914zm0 3.387h2.281v8.595h-2.28V10.3zM79.076 17.824h-.033v1.072h-2.198V6.914h2.281v4.424h.051a2.685 2.685 0 012.396-1.273c2.162 0 3.704 1.859 3.704 4.54 0 2.782-1.475 4.542-3.636 4.542a2.86 2.86 0 01-2.565-1.324zm3.888-3.219c0-1.59-.637-2.695-1.91-2.695-1.442 0-1.978 1.156-1.978 2.747 0 1.576.788 2.582 2.061 2.582 1.175 0 1.827-.973 1.827-2.631M88.555 11.675h.05c.52-.972 1.106-1.476 2.112-1.476.181-.01.363.014.536.07v1.994h-.05c-1.492-.151-2.565.637-2.565 2.447v4.189h-2.28V10.3h2.195l.002 1.374zM97.145 17.944h-.033c-.436.653-1.056 1.156-2.53 1.156-1.76 0-3-.922-3-2.632 0-1.893 1.542-2.496 3.455-2.764 1.424-.201 2.079-.318 2.079-.972 0-.622-.484-1.022-1.441-1.022-1.073 0-1.59.385-1.66 1.206h-2.027c.07-1.508 1.19-2.834 3.703-2.834 2.582 0 3.62 1.157 3.62 3.168v4.373c0 .654.1 1.037.302 1.19v.084h-2.195a2.337 2.337 0 01-.268-.955l-.005.002zm.021-2.08v-1.29a6.317 6.317 0 01-1.59.503c-1.189.268-1.776.537-1.776 1.341 0 .804.536 1.09 1.34 1.09 1.308 0 2.028-.805 2.028-1.643M102.914 11.675h.051c.519-.972 1.106-1.476 2.111-1.476.182-.01.363.014.536.07v1.994h-.05c-1.491-.151-2.564.637-2.564 2.447v4.189h-2.281V10.3h2.195l.002 1.374zM106.914 19.92h.805c.905 0 1.273-.47 1.273-1.175a7.42 7.42 0 00-.653-2.33l-2.313-6.117h2.397l1.273 3.87c.268.788.553 1.877.553 1.877h.034s.234-1.09.503-1.877l1.206-3.87h2.296l-3 8.815c-.653 1.91-1.29 2.598-3.033 2.598h-1.341V19.92z"
+                                fill="#FFFFFF" class="svg__fill--black"></path>
+                            <path
+                                d="M.667 13.818a16.432 16.432 0 01-.041-1.944L1.55 1.362h3.442L4.05 11.966c-.202 2.295.698 3.931 2.989 3.931 2.34 0 3.579-1.664 3.783-3.7l.976-10.835h3.44l-.95 10.7c-.385 4.118-3.118 7.203-7.535 7.203-3.445 0-5.667-2.227-6.082-5.447M16.029 10.258c.449-5.046 3.853-9.229 9.733-9.229a8.063 8.063 0 014.518 1.308l-.394 4.168a5.084 5.084 0 00-4.454-2.074c-3.66 0-5.668 2.54-5.953 5.758-.277 3.133 1.34 5.68 4.884 5.68a6.577 6.577 0 004.907-2.164l-.385 4.28a9.884 9.884 0 01-4.795 1.32c-5.82 0-8.484-4.322-8.066-9.047M33.028 1.362h3.431l-1.253 14.273h4.918c.345 0 1.52-.018 1.836-.037-.018.173-.313 3.298-.313 3.298H31.471l1.557-17.534zM50.903 7.909c.108-.237.193-.483.254-.736a.378.378 0 01.055 0c.02.25.065.499.131.741.187.8 1.521 5.239 1.521 5.239h-4.329s2.322-5.128 2.368-5.241v-.003zm.88-7.348h-.237l-9.397 18.336h3.647l1.32-2.784h6.62l.83 2.78h3.638L51.784.562z"
+                                fill="#FFFFFF" class="svg__fill--primary-blue-03"></path>
+                        </svg></a></div>
+                <div class="links">
+                    <ul>
+                        <li><a href="https://www.library.ucla.edu/visit/locations">Locations and Hours</a></li>
+                        <li><a href="https://www.library.ucla.edu/help/services-resources/ask-us">Ask Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="container">
+
+        <div id="s-lc-public-bc" class="row">
+            <div class="col-md-12">
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb">
+                        <li><a href="http://www.library.ucla.edu/">UCLA Library</a></li>
+
+                        <li class="s-lc-desktop-only"><a href="https://calendar.library.ucla.edu">Calendar</a></li>
+
+                        <li><a
+                                href="/r/new?lid=4361&amp;gid=7748&amp;zone=0&amp;capacity=2&amp;date=2025-08-06&amp;start=&amp;end=">New
+                                Reservation</a></li>
+
+                        <li class="active s-lc-desktop-only"> Space Availability - Powell Library
+                        </li>
+
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <noscript>
+            <div class="alert alert-danger" id="noscript">Your browser has javascript disabled. Without javascript some
+                functions will not work.</div>
+        </noscript>
+
+        <div id="s-lc-public-title-area">
+            <div id="s-lc-public-title" class="row s-lc-spaces-setup-info">
+                <div class="col-md-12">
+                    <h1 id="s-lc-public-pt">
+                        Space For 5-8 people
+
+                        @ Powell Library
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <div id="s-lc-public-main" class="s-lc-public-main">
+                <div id="s-lc-public-page-content" class="row">
+
+                    <div id="col1" class="col-md-12 center">
+                        <input type="hidden" id="capacity" value="2">
+
+
+
+                        <p id="s-lc-new-reservation-filter-text" class="s-lc-spaces-setup-info">
+                            There are 6 booking option(s) available for the &quot;Group Study Rooms&quot; category and
+                            all zones.
+
+
+                            <a id="s-lc-new-reservation-go-back"
+                                href="/r/new?lid=4361&amp;gid=7748&amp;zone=0&amp;capacity=2&amp;date=2025-08-06&amp;start=&amp;end=">You
+                                can go back and change the filters.</a>
+                        </p>
+
+
+                        <div id="s-lc-group-description" role="region" aria-label="description"
+                            class="s-lc-resource-description s-lc-spaces-setup-info">
+                            <h2 style="font-style: italic; text-align: center;">Powell Group Study Rooms</h2>
+
+                            <p style="text-align: center;">
+                                <strong><big><font color="#ee0000">⚠︎ JULY 25TH - JULY 30TH &rarr;&nbsp;RESERVATIONS WILL BE UNAVAILABLE DUE TO POTENTIAL BUILDING CLOSURE FOR MAINTENANCE.</font></big>&nbsp;</strong><br />
+                                <font color="#ee0000">If the library building is open, the spaces are open for drop-in
+                                    study on a first come, first serve basis.&nbsp;</font>
+                            </p>
+
+                            <hr />
+                            <p><img alt="" src="https://d2jv02qf7xgjwx.cloudfront.net/accounts/350886/images/2024Updated_Powell_GSR_map.png" style="width: 400px; height: 450px; float: right;" />
+                            </p>
+
+                            <p style="text-align: center;">&nbsp;</p>
+
+                            <p>The Powell group study rooms are located in the reading room on the first floor of Powell
+                                Library.</p>
+
+                            <p>All Powell group study rooms come equipped with:</p>
+
+                            <ul>
+                                <li>Large table with chairs/couch (room seats 6-8)</li>
+                                <li>White board&nbsp;</li>
+                                <li>Mobile screen which can be connected to via HDMI</li>
+                            </ul>
+
+                            <p>VGA and HDMI adapters and&nbsp;cables,&nbsp;dry erase markers, and other items&nbsp;may
+                                be checked out at the&nbsp;CLICC Lab (Powell 145).</p>
+
+                            <p><b>To book a group study room</b>, select a time slot below, then scroll to the bottom of
+                                the page, set the length of your reservation using the drop down menu, then click
+                                &quot;Submit Times&quot;. You will receive a confirmation email. If you don&#39;t see it
+                                within a few minutes of submitting your booking, check your spam or
+                                junk&nbsp;folder.&nbsp;</p>
+
+                            <p><strong>If you need to cancel your booking</strong>, click on the link at the bottom of
+                                your confirmation email.</p>
+
+                            <p>CLICC Group Study Rooms are available for drop-in study whenever the library is open but
+                                there is no active reservation for that room.</p>
+
+                            <h2><u>Terms &amp; Conditions:</u></h2>
+
+                            <ul>
+                                <li>Current&nbsp;<strong>undergraduate and graduate students, faculty, and staff</strong>&nbsp;(all
+                                    individuals currently eligible for CLICC services) may reserve up to 3 hours once
+                                    every 24 hours up to 3 days in advance. Each individual can reserve up to 6 hours
+                                    per week. UCLA Extension students are not elligible for room reservations.</li>
+                                <li><strong>Instructors</strong>&nbsp;and&nbsp;<strong>teaching assistants&nbsp;</strong>who
+                                    wish to use a study room or pod for a small course or office hours should&nbsp;<a
+                                        href="https://uclalibrary.atlassian.net/servicedesk/customer/portal/15/group/29/create/123"
+                                        rel="nofollow">request an office hours or consultation space through the
+                                        Reservations Portal</a>.</li>
+                                <li>Study rooms in YRL and Powell are&nbsp;<strong>now self-service</strong>.
+                                    Reservation holders&nbsp;<strong>do not need to check in</strong>&nbsp;at a lending
+                                    location before their reservation begins.&nbsp;<strong>QR codes</strong>&nbsp;placed
+                                    at each group study room and collaboration pod can help verify reservation
+                                    schedules. If patrons encounter any issues, they can always consult a CLICC
+                                    consultant at the nearest lending location.&nbsp;</li>
+                                <li>If you have&nbsp;<strong>questions&nbsp;</strong>about the form or our policies,
+                                    please submit an inquiry through the&nbsp;<a
+                                        href="https://uclalibrary.atlassian.net/servicedesk/customer/portal/15/group/29/create/124">CLICC
+                                        Resources &amp; Services Portal</a>. You can also
+                                    check&nbsp;<strong>room availability</strong>&nbsp;by calling the CLICC lab at (310)
+                                    206-0271.</li>
+                            </ul>
+
+                            <hr />
+                            <p style="text-align: center;">
+                                <strong><big><font color="#ee0000">⚠︎ JULY 25TH - JULY 30TH &rarr;&nbsp;RESERVATIONS WILL BE UNAVAILABLE DUE TO POTENTIAL BUILDING CLOSURE FOR MAINTENANCE.</font></big>&nbsp;</strong><br />
+                                <font color="#ee0000">If the library building is open, the spaces are open for drop-in
+                                    study on a first come, first serve basis.&nbsp;</font>
+                            </p>
+
+                        </div>
+
+                        <div id="s-lc-window-limit-warning" class="alert alert-info margin-top-med margin-bottom-none"
+                            role="alert" style="display: none;">
+                            You have reached the end of the bookable window. No availability will be shown past this
+                            point.
+                        </div>
+
+                        <div id="time_grid_cont" role="grid" class="s-lc-spaces-time-grid s-lc-spaces-setup-info">
+                            <div id="eq-time-grid">
+                            </div>
+
+                            <div id="s-lc-time-grid-pagination" class="s-lc-time-grid-pagination">
+                            </div>
+
+                            <div class="s-lc-time-grid-legend" id="eq-time-grid-legend">
+                                <span class="label-eq-cont" data-toggle="tooltip" data-placement="top" title="Slot is available, click to book!"><span class="label label-eq-avail">&nbsp;&nbsp;</span>
+                                Available</span>
+                                <span class="label-eq-cont" data-toggle="tooltip" data-placement="top" title="Your pending booking."><span class="label label-eq-pending">&nbsp;&nbsp;</span>
+                                Your Booking</span>
+                                <span class="label-eq-cont" data-toggle="tooltip" data-placement="top" title="This slot is unavailable for starting a new booking. Bookings may occasionally extend into this slot."><span class="label label-eq-unavailable">&nbsp;&nbsp;</span>
+                                Unavailable</span>
+                            </div>
+
+                        </div>
+
+                        <div id="s-lc-eq-form-box" class="s-lc-spaces-setup-info" style="display: none;" role="region"
+                            aria-label="booking form" aria-live="polite">
+                            <form id="s-lc-eq-form-times" class="form-horizontal" method="post">
+                                <fieldset>
+                                    <div id="s-lc-eq-bwell" class="well" tabindex="0">&nbsp;</div>
+                                    <div id="s-lc-eq-bform-inner" class="col-sm-offset-5">
+                                        <button class="btn btn-primary" name="submit_times" id="submit_times">Submit Times</button>&nbsp;
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                        <div id="s-lc-eq-form" style="clear:both; display: none;" role="region" aria-live="polite"
+                            aria-label="Booking details"></div>
+
+                        <div id="s-lc-eq-errors" class="alert alert-danger" style="display: none;" role="region"
+                            aria-live="polite" aria-label="Error encountered"></div>
+
+                        <div id="s-lc-eq-success" style="display: none;" role="region" aria-live="polite"
+                            aria-labelledby="s-lc-eq-success-title">
+                            <span id="s-lc-eq-success-title" class="sr-only">
+                        Success                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer id="s-lc-public-footer" class="row s-lc-public-footer">
+            <div id="s-lc-public-footer-brand">
+                <span title="libcal-us-1">Powered by</span> <a href="https://www.springshare.com">Springshare</a>.
+            </div>
+
+            <div id="s-lc-public-footer-rights">
+                All rights reserved.
+            </div>
+
+            <div id="s-lc-footer-support-link">
+                <a href="mailto:reservations@library.ucla.edu">Report a tech support issue.</a>
+            </div>
+
+            <div id="s-lc-public-footer-print-link">
+                View this page in a format suitable for
+                <a href="/r/accessible?lid=4361&gid=7748">
+                    screen-readers and keyboard-only users
+                </a>
+            </div>
+
+            <div id="s-lc-public-footer-admin-links" role="navigation" aria-label="Admin Footer">
+                <a id="s-lc-sign-in" href="https://ucla.libapps.com/libapps/login.php?site_id=6727&amp;target=">Login to
+                    LibApps</a>
+            </div>
+
+            <div class="s-lc-public-footer-actions">
+
+                <div id="s-lc-language">
+                    <select id="s-lc-language-selector" aria-label="Select Language">
+                <option value="ca" >català</option>
+                <option value="cy" >Cymraeg</option>
+                <option value="en" selected>English</option>
+                <option value="es" >español</option>
+                <option value="fr" >français</option>
+                <option value="ga" >Irish</option>
+                <option value="ja" >日本語 Nihongo</option>
+                <option value="nl" >Nederlands</option>
+                <option value="sl" >slovenski jezik</option>
+                <option value="vi" >Tiếng Việt</option>
+                <option value="zh" >中文 Zhōngwén</option>
+            </select>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Google Tag Manager -->
+        <script>
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T2SXV2');
+        </script>
+        <!-- End Google Tag Manager -->
+
+
+        <!-- Library Cost Survey -->
+        <script defer src="https://librarystudy.library.ucla.edu/gsurvey.js"></script>
+        <!-- End Library Cost Survey -->
+    </div>
+
+
+    <script defer src="https://static-assets-us.libcal.com/fullcalendar_14/fullcalendar.min.js"></script>
+    <script defer src="https://static-assets-us.libcal.com/js_808/datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://static-assets-us.libcal.com/css_808/datepicker.min.css" />
+
+    <script>
+        var springyFullCalendar = {
+        commonOptions: {
+            schedulerLicenseKey: '0391239527-fcs-1659132663',
+            now: '2025\u002D08\u002D06\u002017\u003A08',
+            nowIndicator: true,
+            scrollTime: '16\u003A00\u003A00',
+            lazyFetching: false,
+            locale: springSpace.language,
+            themeSystem: 'bootstrap',
+            eventTextColor: '#222',
+            eventDisplay: 'block',
+            moreLinkClick: 'day',
+            bootstrapFontAwesome: {
+                goToDate: 'fa-calendar',
+                goToNextAvailable: 'fa-fast-forward',
+                refresh: 'fa-refresh',
+            },
+            navLinks: true, // https://fullcalendar.io/docs/navLinks
+            resourceOrder: false, // https://fullcalendar.io/docs/resourceOrder
+            stickyHeaderDates: false, // https://fullcalendar.io/docs/stickyHeaderDates && https://github.com/springshare/LibCal/issues/11801
+            dayCellContent: function (info) {
+                // regardless of language, show the day as a number with no extra characters
+                return info.date.getDate();
+            },
+        },
+        timelineOptions: {
+            height: 'auto',
+            refetchResourcesOnNavigate: false,
+            eventOverlap: false,
+            displayEventTime: false,
+            slotDuration: '00\u003A30',
+            titleFormat: springSpace.dateFormat,
+            views: {
+                timelineSingleDay: {
+                    type: 'resourceTimeline',
+                    buttonText: 'Day\u0020View',
+                    duration: {days: 1},
+                    slotLabelFormat: springSpace.timeFormat,
+                },
+                timelineHourlyShort: {
+                    type: 'resourceTimeline',
+                    duration: {days: 3},
+                    slotLabelFormat: [springSpace.dateFormat, springSpace.timeFormat],
+                },
+                timelineHourlyLong: {
+                    type: 'resourceTimeline',
+                    duration: {days: 7},
+                    slotLabelFormat: [springSpace.dateFormat, springSpace.timeFormat],
+                },
+                timelineDailyLong: {
+                    type: 'resourceTimeline',
+                    slotDuration: '24:00',
+                    duration: {days: 28},
+                    slotLabelFormat: ['dd D'],
+                    nowIndicator: false
+                },
+                resourceTimeGridWeek: {
+                    buttonText: 'Week\u0020View',
+                    slotLabelFormat: springSpace.timeFormat,
+                }
+            },
+        },
+        publicTexts: {
+            allDay: 'All\u0020Day',
+            available: 'Available',
+            dayGridMonth: 'Month',
+            dayGridWeek: 'Agenda',
+            goToDate: 'Go\u0020To\u0020Date',
+            goToNextAvailable: 'Next\u0020Available',
+            next: 'Next',
+            prev: 'Previous',
+            timeGridDay: 'Day',
+            timeGridWeek: 'Week',
+            today: 'Today',
+            unavailable: 'Unavailable',
+            yourBooking: 'Your\u0020Booking',
+            listWeek: 'Week\u0020List',
+        },
+        adminTexts: {
+            goToDate: 'Go\u0020To\u0020Date',
+            refresh: 'Refresh',
+            prev: 'Previous',
+            next: 'Next',
+            today: 'Today',
+            week: 'Week',
+            month: 'Month',
+            day: 'Day',
+            dayGridWeek: 'Agenda',
+            allDay: 'All\u0020Day',
+            atLocation: '\u0025title\u0025\u0020at\u0020\u0025location\u0025',
+        },
+        dateTimeFormats: {
+            monthViewTitle: 'MMMM YYYY',
+        },
+    };
+
+    // placeholder for dynamic content boxes with a full calendar
+    var calendarList = {};
+
+    function reRenderCalendarList() {
+        for (var calId in calendarList) {
+            calendarList[calId].render();
+        }
+    }
+    </script>
+    <script defer src="https://static-assets-us.libcal.com/js_808/direct/full-calendar-common.min.js"></script>
+    <script>
+        var springLang = {
+            eq_js_until_det: 'until...',
+            eq_js_rem_pending: 'Remove\u0020Pending\u0020Booking',
+            eq_js_cart_tt: 'Create\u0020a\u0020shopping\u0020cart\u0020with\u0020these\u0020space\u0020bookings,\u0020and\u0020go\u0020to\u0020equipment\u0020booking\u0020page\u0020to\u0020add\u0020more\u0020items\u0020to\u0020the\u0020cart.',
+            eq_js_isRequired: 'is\u0020required\u0021',
+        };
+    </script>
+
+    <script defer src="https://static-assets-us.libcal.com/js_808/direct/public/equipment/common.min.js"></script>
+    <script defer src="https://static-assets-us.libcal.com/js_808/direct/public/equipment/spaces.min.js"></script>
+    <script defer src="https://static-assets-us.libcal.com/js_808/direct/public/equipment/session.min.js"></script>
+    <script>
+        var pendingRoomBookings = [];
+        var pendingBookingNextId = 1;
+        var pendingBookingsBlowAwayCart = false;
+
+        function addError(msg, id) {
+            jQuery(".s-lc-eq-" + id).addClass("has-error").find(".form-control").attr("aria-invalid", true);
+            jQuery(".s-lc-eq-" + id).find(".s-lc-eq-flab").append('<div class="error-message">' + msg + "</div>");
+            jQuery("#" + id).focus();
+            return false;
+        }
+
+        function removeErrors() {
+            jQuery(".s-lc-eq-q").removeClass("has-error").find(".error-message").remove();
+        }
+
+        function agreeToTermsAndConditions() {
+            jQuery("#bform-terms-container").hide();
+            jQuery("#bform-form-container").show();
+
+            scrollAndFocusOnElement('#s-lc-bform-help');
+
+            return false;
+        }
+
+        function toggleSubmitButton() {
+            var isTermsAgreedTo = jQuery(this).is(':checked');
+            jQuery('#btn-form-submit').prop('disabled', !isTermsAgreedTo);
+        }
+
+        function customFormValidation() {
+            // exists to be overwritten by the specific group validation function
+        }
+
+        function preFormValidationAndPayload() {
+            removeErrors();
+            jQuery("#s-lc-eq-errors").hide();
+
+            if (!isVisibleFieldsValid()) {
+                return false;
+            }
+
+            if (!customFormValidation()) {
+                return false;
+            }
+
+            pageBusyBegin("#btn-form-submit");
+
+            var formElement = '#s-lc-eq-bform';
+            var bookings = preparePendingBookingsPayload();
+            var bookingsPayload = JSON.stringify(bookings);
+
+            springyCommon.appendHiddenInput('bookings', bookingsPayload, formElement);
+            springyCommon.appendHiddenInput('returnUrl', springySpaces.getReturnUrl(), formElement);
+            springyCommon.appendHiddenInput('pickupHolds', jQuery('#s-lc-pickup-holds').val(), formElement);
+            springyCommon.appendHiddenInput('method', springyPage.bookingMethod, formElement);
+
+            return true;
+        }
+
+        function bookingSuccessCallback(data) {
+            pageBusyEnd("#btn-form-submit");
+            if (data.error) {
+                jQuery("#s-lc-eq-errors").html(data.error).show();
+                return;
+            }
+
+            jQuery('#s-lc-eq-form, .s-lc-spaces-setup-info').hide();
+            jQuery('#s-lc-eq-success').html(data.html).show().focus();
+
+            springySession.clear();
+
+            return;
+        }
+
+        function bookingErrorCallback(xhr) {
+            pageBusyEnd("#btn-form-submit");
+
+            var errorMessage = ajaxErrorGetText(xhr);
+            jQuery('#s-lc-eq-errors').html(errorMessage).show().focus();
+        }
+
+        function submitPendingTimes() {
+            var payload = {
+                patron: springySpaces.patron,
+                patronHash: springySpaces.patronHash,
+                returnUrl: springySpaces.getReturnUrl(),
+                bookings: preparePendingBookingsPayload(),
+                method: springyPage.bookingMethod,
+            };
+
+            pageBusyBegin("#submit_times");
+
+            jQuery.ajax({
+                type: 'post',
+                url: '/ajax/space/times',
+                data: payload,
+                dataType: 'json',
+            })
+            .always(function () {
+                pageBusyEnd("#submit_times");
+            })
+            .done(function(data) {
+                if (data.redirect) {
+                    // redirect to libauth checkout page
+                    window.location = data.redirect;
+                    return;
+                }
+
+                // hide a bunch of stuff
+                jQuery('.s-lc-spaces-setup-info').hide();
+
+                // setup booking form + terms html
+                jQuery("#s-lc-eq-form").html(data.html).show();
+
+                // scroll to the top of the page
+                window.scrollTo(0, 0);
+            })
+            .fail(ajaxErrorHandler);
+
+            return false;
+        }
+
+        function makeCartAndGoToEquipPage() {
+            // we only allow user to do this if all the room bookings start at the same time
+            if (pendingRoomBookings.length > 1) {
+                var startTime = pendingRoomBookings[0].start;
+                for (var i = 1; i < pendingRoomBookings.length; i++) {
+                    var bookingInfo = pendingRoomBookings[i];
+                    if (!bookingInfo.start.isSame(startTime)) {
+                        errorAlert('You can only create an Equipment Cart if all your room bookings begin at the same time.');
+                        return false;
+                    }
+                }
+            }
+
+            var payload = {
+                blowAwayCart: pendingBookingsBlowAwayCart,
+                returnUrl: springySpaces.getReturnUrl(),
+                bookings: preparePendingBookingsPayload(),
+                method: springyPage.bookingMethod,
+            };
+
+            workingAlert();
+
+            jQuery.ajax({
+                type: 'post',
+                url: "/ajax/space/createcart",
+                data: payload,
+                dataType: 'json',
+            })
+            .always(function (data) {
+                stopAlert();
+            })
+            .done(function(data) {
+                if (data.success) {
+                    // redirect to new page
+                    window.location = data.redirect;
+                } else if (data.hasItems) {
+                    errorAlert("Cart already has items in it. If you click the shopping cart again, the existing items in the cart will be replaced by the selected rooms.");
+                    pendingBookingsBlowAwayCart = true;
+                } else {
+                    errorAlert(data.error);
+                }
+            })
+            .fail(ajaxErrorHandler);
+
+            return false;
+        }
+
+        function changeBookingTimes() {
+            // show the old form box + availability grid
+            jQuery('.s-lc-spaces-setup-info').show();
+
+            // hide the terms + booking form
+            jQuery('#s-lc-eq-form, #s-lc-eq-errors').hide();
+
+            return false;
+        }
+
+        function getSpaceResourceContent(info) {
+            var html = '';
+            var resourceData = info.resource.extendedProps;
+            var resourceId = springyPage.isSeatBooking ? resourceData.seatId : resourceData.eid;
+            var title  = escapeHtml(info.fieldValue);
+
+            if (resourceData.hasInfo) {
+                html += '<a href="#" class="s-lc-item-more-info" data-eid="' + resourceId + '"' +
+                    ' aria-label="Click\u0020for\u0020more\u0020info\u0020about ' + title + '">' +
+                    '<span class="s-lc-info-label">Info</span>' +
+                    '</a>';
+            }
+
+            var additionalClasses = '';
+            var additionalIcons = '';
+            var filterIds = resourceData.filterIds || [];
+
+            for (var i = 0; i < filterIds.length; i++) {
+                var filterId = filterIds[i];
+                if (filterId in springyPage.searchFilters) {
+                    var filter = springyPage.searchFilters[filterId];
+
+                    additionalClasses += ' s-lc-filter-' + filterId;
+                    additionalIcons += ' <i class="fa ' + filter.icon + ' fa-lg" aria-hidden="true"></i>';
+                }
+            }
+
+            var resourceLabel = '<span class="fc-cell-text' + additionalClasses + '">' + title + additionalIcons + '</span>';
+
+            if (resourceData.url !== undefined) {
+                html += '<a href="' + resourceData.url + '">' + resourceLabel + '</a>';
+            } else {
+                html += resourceLabel;
+            }
+
+            return {
+                html: html,
+            };
+        }
+
+        jQuery(function () {
+            springyPublic.registerClearBackForwardCache();
+
+            jQuery('#lid').on('change', goToPageForLocation);
+            jQuery('#gid').on('change', goToPageForGroup);
+
+            jQuery('#eq_cart').on('click', makeCartAndGoToEquipPage);
+
+            jQuery('#s-lc-eq-form-times').on('submit', submitPendingTimes);
+        });
+    </script>
+
+
+    <script src="https://static-assets-us.libcal.com/js_808/direct/pagination.min.js"></script>
+    <script src="https://static-assets-us.libcal.com/js_808/direct/public/equipment/spaces-standard.min.js"></script>
+    <script>
+        var springyPage = {
+            wantAlternatingBackground: false,
+            timelineOptions: {
+                resourceAreaWidth: '33%',
+                initialDate: '2025\u002D08\u002D06',            },
+            locationId: 4361,
+            groupId: 7748,
+            itemId: -1,
+            isSeatBooking: 0,
+            seatId: 0,
+            zoneId: 0,
+            searchFilters: {"616":{"id":616,"icon":"fa-plug","name":"Power Available"}},
+            filterIds: [],
+            isDailyBookings: 0,
+            resourceRows: 6,
+            resourceColumnLabel: 'Space',
+            viewMode: 'timelineSingleDay',
+            returnUrl: '\/r\/new\u003Flid\u003D4361\u0026gid\u003D7748\u0026zone\u003D0\u0026capacity\u003D2\u0026date\u003D2025\u002D08\u002D06\u0026start\u003D\u0026end\u003D',
+            capacitySeatValue: -1,
+            pageIndex: 0,
+            pageSize: 18,
+            bookingMethod: 13,
+        };
+
+        var resources = [];
+        var resourceNameIdMap = [];
+
+                                                        resources.push({
+    id: "eid_29694",
+    title: "Powell\u0020Group\u0020Study\u0020Room\u0020A (Capacity 8)",
+    url: "/space/29694",
+    eid: 29694,
+    gid: 7748,
+    lid: 4361,
+    grouping: "Group\u0020Study\u0020Rooms",
+    gtype: 2,
+    gBookingSelectableTime: false,
+    capacity: 8,
+    hasInfo: true,
+    thumbnail: "",
+    filterIds: [],
+});
+
+resourceNameIdMap["eid_29694"] = "Powell\u0020Group\u0020Study\u0020Room\u0020A";
+                                    resources.push({
+    id: "eid_29695",
+    title: "Powell\u0020Group\u0020Study\u0020Room\u0020B (Capacity 8)",
+    url: "/space/29695",
+    eid: 29695,
+    gid: 7748,
+    lid: 4361,
+    grouping: "Group\u0020Study\u0020Rooms",
+    gtype: 2,
+    gBookingSelectableTime: false,
+    capacity: 8,
+    hasInfo: true,
+    thumbnail: "",
+    filterIds: [],
+});
+
+resourceNameIdMap["eid_29695"] = "Powell\u0020Group\u0020Study\u0020Room\u0020B";
+                                    resources.push({
+    id: "eid_29696",
+    title: "Powell\u0020Group\u0020Study\u0020Room\u0020C (Capacity 8)",
+    url: "/space/29696",
+    eid: 29696,
+    gid: 7748,
+    lid: 4361,
+    grouping: "Group\u0020Study\u0020Rooms",
+    gtype: 2,
+    gBookingSelectableTime: false,
+    capacity: 8,
+    hasInfo: true,
+    thumbnail: "",
+    filterIds: [],
+});
+
+resourceNameIdMap["eid_29696"] = "Powell\u0020Group\u0020Study\u0020Room\u0020C";
+                                    resources.push({
+    id: "eid_29697",
+    title: "Powell\u0020Group\u0020Study\u0020Room\u0020D (Capacity 8)",
+    url: "/space/29697",
+    eid: 29697,
+    gid: 7748,
+    lid: 4361,
+    grouping: "Group\u0020Study\u0020Rooms",
+    gtype: 2,
+    gBookingSelectableTime: false,
+    capacity: 8,
+    hasInfo: true,
+    thumbnail: "",
+    filterIds: [],
+});
+
+resourceNameIdMap["eid_29697"] = "Powell\u0020Group\u0020Study\u0020Room\u0020D";
+                                    resources.push({
+    id: "eid_29698",
+    title: "Powell\u0020Group\u0020Study\u0020Room\u0020E (Capacity 8)",
+    url: "/space/29698",
+    eid: 29698,
+    gid: 7748,
+    lid: 4361,
+    grouping: "Group\u0020Study\u0020Rooms",
+    gtype: 2,
+    gBookingSelectableTime: false,
+    capacity: 8,
+    hasInfo: true,
+    thumbnail: "",
+    filterIds: [],
+});
+
+resourceNameIdMap["eid_29698"] = "Powell\u0020Group\u0020Study\u0020Room\u0020E";
+                                    resources.push({
+    id: "eid_29699",
+    title: "Powell\u0020Group\u0020Study\u0020Room\u0020F (Capacity 8)",
+    url: "/space/29699",
+    eid: 29699,
+    gid: 7748,
+    lid: 4361,
+    grouping: "Group\u0020Study\u0020Rooms",
+    gtype: 2,
+    gBookingSelectableTime: false,
+    capacity: 8,
+    hasInfo: true,
+    thumbnail: "",
+    filterIds: [],
+});
+
+resourceNameIdMap["eid_29699"] = "Powell\u0020Group\u0020Study\u0020Room\u0020F";
+                                                                            
+        
+        var paginatedResources = springyPagination.createPaginatedResources(resources, springyPage.pageSize);
+
+        var capacityRangesMap = {};
+                                capacityRangesMap[0] = {
+                min: 0,
+                max: 9223372036854775807
+            };
+                                capacityRangesMap[1] = {
+                min: 0,
+                max: 4
+            };
+                                capacityRangesMap[2] = {
+                min: 5,
+                max: 8
+            };
+                                capacityRangesMap[3] = {
+                min: 9,
+                max: 12
+            };
+                                capacityRangesMap[4] = {
+                min: 13,
+                max: 9223372036854775807
+            };
+        
+        var resourceSettings = createResourceSettings(1);
+
+        springyPage.resourceCount = resources.length;
+    </script>
+
+    <script>
+        var pendingBookingsLimitIssues = null;
+    var dateFormatStartTimeDict = "MMDDHHmm";
+    var dateFormatDayOfYear = "YYYY-MM-DD";
+    var issueTypeAdditionalText = {
+        "duration": " minutes",
+        "frequency": " bookings",
+    };
+    var frequencyDisplayStrings = {
+        "d": " per\u0020day",
+        "w": " per\u0020week",
+        "m": " per\u0020month",
+        "y": " per\u0020year",
+        "t": " at\u0020a\u0020time",
+    };
+
+    function pendingRoomBookingsAreNowEmpty() {
+        jQuery("#s-lc-eq-form-box").hide();
+    }
+
+    function renderPendingRoomBookings() {
+        // ensure all tooltips are hidden
+        jQuery(".tooltip").hide();
+
+        if (pendingRoomBookings.length == 0) {
+            pendingRoomBookingsAreNowEmpty();
+            return;
+        }
+
+        // refresh the shown cart items
+        // format the room data as html
+        var html = '<div>';
+
+        var startDateTimeFormat = springyPage.isDailyBookings ? springSpace.dateFormat : springSpace.getDateTimeFormat();
+        var endDateTimeFormat = springyPage.isDailyBookings ? springSpace.dateFormat : springSpace.getShortDateTimeFormat();
+        var totalCost = 0;
+
+        for (var i = 0; i < pendingRoomBookings.length; i++) {
+            var bookingInfo = pendingRoomBookings[i];
+            var bookingCost = bookingInfo.cost;
+            var resourceId = bookingInfo.seat_id > 0 ? bookingInfo.seat_id : bookingInfo.eid;
+            var resourceName = resourceNameIdMap['eid_' + resourceId];
+
+            html += '<div class="form-group s-lc-pending-booking" id="pending_booking_' + bookingInfo.id + '">';
+            html += '   <label class="col-md-5 control-label" for="bookingend_' + bookingInfo.id + '"><strong>' + resourceName + '</strong>: ' + bookingInfo.start.format(startDateTimeFormat) + ' ' + springLang.eq_js_until_det + '</label>';
+            html += '   <div class="col-md-3">';
+            html += '     <div class="input-group">';
+            html += '           <select id="bookingend_' + bookingInfo.id + '" name="bookingend_' + bookingInfo.id + '" data-booking="' + bookingInfo.id + '" class="form-control input-sm b-end-date">';
+
+            for (var selectionIndex = 0; selectionIndex < bookingInfo.options.length; selectionIndex++) {
+                var selected = bookingInfo.optionSelected == selectionIndex ? 'selected="selected"' : '';
+                var value = bookingInfo.options[selectionIndex];
+                var name = moment(value).format(endDateTimeFormat);
+                var checksum = bookingInfo.optionChecksums[selectionIndex];
+                html += '<option value="' + value + '" ' + selected + ' data-crc="' + checksum + '">' + name + '</option>';
+            }
+
+            html += '           </select>';
+            html += '           <div class="input-group-btn">';
+            html += '               <button type="button" class="btn btn-default btn-sm" onclick="return removePendingBooking(' + bookingInfo.id + ',' + bookingInfo.lid + ');"><i class="fa fa-trash-o" aria-hidden="true"></i><span class="sr-only">' + springLang.eq_js_rem_pending + '</span></button>';
+            html += '           </div>';
+            html += '       </div>';
+            html += '     </div>';
+            if (bookingCost > 0) {
+                var costDisplay = springSpace.formatCurrency(bookingCost);
+                var costPreview = "\u007Bamount\u007D".replace("\u007Bamount\u007D", costDisplay).replace("\u007Brate\u007D", "");
+                html += '<label class="col-md-3 control-label s-lc-billing-cost-single">' + costPreview + '</label>';
+            }
+            html += '   </div>';
+            html += '   </div>';
+            html += '</div>';
+
+            totalCost += bookingCost;
+        }
+
+        var bookingDurationOkay = true;
+        if (pendingBookingsLimitIssues) {
+            bookingDurationOkay = false;
+            pendingBookingsLimitIssues.forEach(function(issueDetails) {
+                var limitDisplay = issueDetails.allowed + issueTypeAdditionalText[issueDetails.type] + frequencyDisplayStrings[issueDetails.frequency];
+                var usedDisplay = issueDetails.used + issueTypeAdditionalText[issueDetails.type];
+                var issueDisplay = 'Sorry,\u0020you\u0020can\u0020only\u0020reserve\u0020\u007BlimitAmount\u007D,\u0020and\u0020you\u0020currently\u0020have\u0020\u007BusedAmount\u007D.\u0020Please\u0020adjust\u0020your\u0020booking.'.replace('{limitAmount}', limitDisplay).replace('{usedAmount}', usedDisplay);
+                var issueHtml = '<strong>' + issueDetails.group + '</strong>: ' + issueDisplay;
+
+                html += '\
+                    <div class="form-group">\
+                        <div class="col-md-offset-1 col-md-10">\
+                            <div class="alert alert-warning">' + issueHtml + '</div>\
+                        </div>\
+                    </div>';
+            });
+        }
+
+        if (totalCost > 0) {
+            html += '\
+                <div class="form-group s-lc-pending-booking">\
+                    <label class="col-md-5 control-label">Total\u0020cost\u0020for\u0020this\u0020reservation\u003A</label>\
+                    <label class="col-md-5 control-label s-lc-billing-cost-total">' + springSpace.formatCurrency(totalCost) + '</label>\
+                </div>';
+        }
+
+        html += '</div>';
+
+        // show the booking form box which contains the booking well, the terms + conditions and the booking form
+        jQuery("#s-lc-eq-form-box").show();
+
+        // put the item in the displayed cart + set the window focus to the cart
+        var roomCart = jQuery("#s-lc-eq-bwell");
+        roomCart.empty();
+        roomCart.html(html);
+        roomCart.focus();
+
+        // disable the add equipment and form submission buttons until the times are okay
+        jQuery("#submit_times, #eq_cart").prop('disabled', !bookingDurationOkay);
+
+        // setup delete icon tooltips
+        accessibleIcons();
+
+        // make the tooltip for the cart icon
+        jQuery("#eq_cart").tooltip({
+            title: springLang.eq_js_cart_tt,
+            html: true,
+            container: "body"
+        });
+
+        jQuery('.b-end-date').on('change', function() {
+            var changedBooking = jQuery(this);
+
+            updatePendingBookingDuration(changedBooking);
+        });
+    }
+
+    function preparePendingBookingsPayload() {
+        var payload = [];
+
+        for (var i = 0; i < pendingRoomBookings.length; i++) {
+            var bookingInfo = pendingRoomBookings[i];
+            payload.push({
+                id: bookingInfo.id,
+                eid: bookingInfo.eid,
+                seat_id: bookingInfo.seat_id,
+                gid: bookingInfo.gid,
+                lid: bookingInfo.lid,
+                start: bookingInfo.start.format(springSpace.phpDateTimeFormat),
+                end: bookingInfo.end.format(springSpace.phpDateTimeFormat),
+                checksum: bookingInfo.checksum,
+            });
+        }
+        return payload;
+    }
+
+    function updatePendingBookingsFromData(bookings) {
+        pendingRoomBookings = [];
+
+        for (var i = 0; i < bookings.length; i++) {
+            var booking = bookings[i];
+
+            pendingRoomBookings.push({
+                id: booking.id,
+                eid: booking.eid,
+                seat_id: booking.seat_id,
+                gid: booking.gid,
+                lid: booking.lid,
+                cost: booking.cost,
+                checksum: booking.checksum,
+
+                name: booking.name,
+                start: moment(booking.start),
+                end: moment(booking.end),
+
+                options: booking.options,
+                optionSelected: booking.optionSelected,
+                optionChecksums: booking.optionChecksums,
+            });
+        }
+    }
+
+    function pendingRoomBookingsUpdateListAndAvailability(payload, fcInstance) {
+        // if we are adding rooms, we might need to hide the previous booking success message
+        jQuery("#s-lc-eq-success").hide();
+
+        workingAlert();
+
+        // find out booking information
+        jQuery.ajax({
+            type: "post",
+            url: "/spaces/availability/booking/add",
+            data: payload,
+            dataType: "json",
+        })
+        .always(stopAlert)
+        .done(function(data) {
+            if (data.error) {
+                if (data.isRefreshRequired) {
+                    fcInstance.refetchEvents();
+                }
+
+                return errorAlert(data.error);
+            }
+
+            // success! the entire pending bookings array can be re-created now
+            pendingBookingsLimitIssues = data.limitIssues;
+            updatePendingBookingsFromData(data.bookings);
+
+            // this request might have came back with updated grid data
+            // if it did not - refresh the whole grid
+            if (data.gridUpdateData) {
+                updateGridEventsForItem(data.gridUpdateData, fcInstance);
+            } else if (fcInstance) {
+                fcInstance.refetchEvents();
+            }
+
+            renderPendingRoomBookings();
+        })
+        .fail(ajaxErrorHandler);
+
+        return false;
+    }
+
+    function createStartTimeToClassMap(gridData) {
+        var startTimeToClassMap = {};
+
+        gridData.forEach(function(gridElement) {
+            var startMoment = moment(gridElement.start);
+            startTimeToClassMap[startMoment.format(dateFormatStartTimeDict)] = [gridElement.className];
+        });
+
+        return startTimeToClassMap;
+    }
+
+    function updateGridEventsForItem(gridUpdateData, fcInstance) {
+        var changedItemId = gridUpdateData.itemId;
+        var changedRangeStart = moment(gridUpdateData.dateStart, springSpace.phpDateTimeFormat);
+        var changedRangeEnd = moment(gridUpdateData.dateEnd, springSpace.phpDateTimeFormat);
+        var startTimeToClassMap = createStartTimeToClassMap(gridUpdateData.gridData);
+
+        fcInstance.batchRendering(function() {
+            fcInstance.getEvents().forEach(function (clientEvent) {
+                if (clientEvent.extendedProps.itemId !== changedItemId) {
+                    return;
+                }
+
+                var clientEventStart = moment(clientEvent.start);
+                // if this event is before the day of events that was changed - forget it
+                // and we only want to process events that start before the changed range "end"
+                if (clientEventStart.isBefore(changedRangeStart) || !clientEventStart.isBefore(changedRangeEnd)) {
+                    return;
+                }
+
+                var startKey = clientEventStart.format(dateFormatStartTimeDict);
+                if (startKey in startTimeToClassMap) {
+                    // this slot is unavailable
+                    clientEvent.setProp('classNames', startTimeToClassMap[startKey]);
+                    clientEvent.setExtendedProp('status', 1);
+                } else {
+                    // this slot is available
+                    clientEvent.setProp('classNames', ["s-lc-eq-avail"]);
+                    clientEvent.setExtendedProp('status', 0);
+                }
+            });
+        });
+    }
+
+    function timeGridClickedOnAvailableRoom(calEvent, fcInstance) {
+        var resource = calEvent.getResources()[0];
+        var resourceData = resource.extendedProps;
+        var timeslotData = calEvent.extendedProps;
+        var view = fcInstance.view;
+
+        var payload = {
+            add: {
+                eid: resourceData.eid,
+                seat_id: resourceData.seatId,
+                gid: resourceData.gid,
+                lid: resourceData.lid,
+                start: moment(calEvent.start).format(springSpace.phpDateTimeFormat),
+                checksum: timeslotData.checksum,
+            },
+                        lid: 4361,
+            gid: 7748,
+                        start: moment(view.activeStart).format(dateFormatDayOfYear),
+            end: moment(view.activeEnd).format(dateFormatDayOfYear),
+            bookings: preparePendingBookingsPayload(),
+        }
+
+        return pendingRoomBookingsUpdateListAndAvailability(payload, fcInstance);
+    }
+
+    function updatePendingBookingDuration(changedBooking) {
+        var fcInstance = getCurrentTimelineInstance(4361);
+        var view = fcInstance.view;
+        var selectedElement = changedBooking.find(':selected');
+
+        var payload = {
+            update: {
+                id: changedBooking.data('booking'),
+                checksum: selectedElement.data('crc'),
+                end: changedBooking.val()
+            },
+                        lid: 4361,
+            gid: 7748,
+                        start: moment(view.activeStart).format(dateFormatDayOfYear),
+            end: moment(view.activeEnd).format(dateFormatDayOfYear),
+            bookings: preparePendingBookingsPayload(),
+        }
+
+        return pendingRoomBookingsUpdateListAndAvailability(payload, fcInstance);
+    }
+
+    function removePendingBooking(pendingId, locationId) {
+        var timeline = getCurrentTimelineInstance(locationId);
+        var view = timeline.view;
+
+        var payload = {
+            removeId: pendingId,
+                        lid: 4361,
+            gid: 7748,
+                        start: moment(view.activeStart).format(dateFormatDayOfYear),
+            end: moment(view.activeEnd).format(dateFormatDayOfYear),
+            bookings: preparePendingBookingsPayload(),
+        }
+
+        return pendingRoomBookingsUpdateListAndAvailability(payload, timeline);
+    }
+
+    function formatEventsForFullCalendar(events) {
+        events.forEach(function(eventData) {
+            eventData.resourceId = "eid_" + eventData.itemId;
+
+            if (eventData.className) {
+                // this slot is unavailable
+                eventData.status = 1;
+                eventData.classNames = [eventData.className];
+            } else {
+                // this slot is available
+                eventData.classNames = ["s-lc-eq-avail"];
+                eventData.status = 0;
+            }
+        });
+
+        return events;
+    }
+
+    function timeGridRoomFetchEventsForTimePeriod(start, end, callback, lid, gid, eid) {
+        var data = {
+            lid: lid,
+            gid: gid,
+            eid: eid,
+            seat: springyPage.isSeatBooking,
+            seatId: springyPage.seatId,
+            zone: springyPage.zoneId,
+            filters: springyPage.filterIds,
+            start: moment(start).format(dateFormatDayOfYear),
+            end: moment(end).format(dateFormatDayOfYear),
+            bookings: preparePendingBookingsPayload(),
+            pageIndex: springyPage.pageIndex,
+            pageSize: springyPage.pageSize,
+        };
+
+        var url = '/spaces/availability/grid';
+
+                        if (typeof springyPage.autoCreateBookingDate === 'string') {
+            url = '/spaces/availability/grid/pre-create'
+            data.autoCreateBookingDate = springyPage.autoCreateBookingDate;
+            springyPage.autoCreateBookingDate = null;
+        }
+
+        springyCommon.closeAllPopups();
+
+        jQuery.ajax({
+            type: 'post',
+            url: url,
+            data: data,
+            dataType: 'json',
+        })
+        .done(function(data) {
+            callback(formatEventsForFullCalendar(data.slots));
+
+            // sometimes on an initial view of the availability grid we auto-create a booking
+            // (currently this is only possible via maps)
+            if (data.isPreCreatedBooking) {
+                updatePendingBookingsFromData(data.bookings);
+                renderPendingRoomBookings();
+            }
+
+            var isAtEndOfWindowLimit = data.windowEnd === true;
+            jQuery('#s-lc-window-limit-warning').toggle(isAtEndOfWindowLimit);
+            jQuery('.fc-next-button').prop('disabled', isAtEndOfWindowLimit);
+
+                        var selectorPrefix = '';
+            var isNextAvailableButtonWanted = (document.querySelector(selectorPrefix + '.s-lc-eq-avail') === null);
+            jQuery(selectorPrefix + '.fc-goToNextAvailable-button').toggle(isNextAvailableButtonWanted);
+        })
+        .fail(function(xhr) {
+            // let fullcalendar know that the request has completed with no results
+            callback([]);
+
+            // and display the error to the user
+            ajaxErrorHandler(xhr);
+        });
+    }
+    </script>
+
+
+
+</body>
+
+</html>

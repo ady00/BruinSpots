@@ -1,0 +1,443 @@
+import React, { useMemo } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
+import {
+  FacilityType,
+  Facility,
+  AccordionRefs,
+  RoomStatus,
+  AcademicRoom,
+  LibraryRoom,
+  FacilityRoom,
+} from "@/types";
+import { formatTime, formatDuration } from "@/utils/format";
+import { RoomBadge } from "@/components/RoomBadge";
+import FacilityRoomDetails from "@/components/FacilityRoomDetails";
+import { getLibraryHoursMessage } from "@/utils/libraryHours";
+import AcademicRoomDetailLoader from "@/components/AcademicRoomDetailLoader";
+
+interface FacilityAccordionProps {
+  facility: Facility;
+  facilityType: FacilityType;
+  expandedItems: string[];
+  toggleItem: (itemId: string) => void;
+  accordionRefs: React.MutableRefObject<AccordionRefs>;
+  idPrefix: string;
+}
+
+const getRoomAvailabilityMessage = (room: LibraryRoom): React.ReactNode => {
+  if (room.status === RoomStatus.AVAILABLE) {
+    return (
+      room.availableFor && (
+        <span className="text-xs text-muted-foreground">
+          Available for {formatDuration(room.availableFor)}
+        </span>
+      )
+    );
+  } else if (room.status === RoomStatus.OPENING_SOON && room.availableAt) {
+    return (
+      <span className="text-xs text-muted-foreground">
+        {`Available at ${formatTime(room.availableAt)}`}
+        {room.availableFor ? ` for ${formatDuration(room.availableFor)}` : ""}
+      </span>
+    );
+  } else if (room.availableAt) {
+    // Handle case where it's reserved but will be available later
+    return (
+      <span className="text-xs text-muted-foreground">
+        {`Available at ${formatTime(room.availableAt)}`}
+        {room.availableFor ? ` for ${formatDuration(room.availableFor)}` : ""}
+      </span>
+    );
+  } else {
+    // Handle case where it's fully booked with no future availability info
+    return <span className="text-xs text-muted-foreground">Fully booked</span>;
+  }
+};
+
+export const FacilityAccordion: React.FC<FacilityAccordionProps> = ({
+  facility,
+  facilityType,
+  expandedItems,
+  toggleItem,
+  accordionRefs,
+  idPrefix,
+}) => {
+  const facilityId = `${idPrefix}-${facility.id}`;
+
+  return (
+    <AccordionItem
+      value={facilityId}
+      key={facilityId}
+      ref={(el) => {
+        accordionRefs.current[facilityId] = el;
+      }}
+    >
+      <div className="sticky top-0 bg-background/95 backdrop-blur-sm z-10 border-b border-border/20">
+        <AccordionTrigger
+          onClick={() => toggleItem(facilityId)}
+          className="px-4 py-2 hover:no-underline hover:bg-muted/30 group transition-colors"
+        >
+          <div className="flex items-center justify-between flex-1 mr-2">
+            <span>{facility.name}</span>
+            <div className="ml-2">
+              {!facility.isOpen ? (
+                <Badge
+                  variant="outline"
+                  className="bg-zinc-700/50 text-zinc-300 border-zinc-600"
+                >
+                  CLOSED
+                </Badge>
+              ) : (
+                <Badge
+                  variant="outline"
+                  className={`${
+                    facility.roomCounts.available > 0
+                      ? "bg-emerald-900/30 text-emerald-300 border-emerald-700/50"
+                      : "bg-red-900/30 text-red-300 border-red-700/50"
+                  }`}
+                >
+                  {facility.roomCounts.available}/{facility.roomCounts.total}
+                </Badge>
+              )}
+            </div>
+          </div>
+        </AccordionTrigger>
+      </div>
+      <AccordionContent className="bg-background/95 backdrop-blur-sm">
+        {!facility.isOpen ? (
+          <div className="px-4 py-2 text-sm text-muted-foreground backdrop-blur-sm rounded-md mx-2 mb-2">
+            {facilityType === FacilityType.LIBRARY ? (
+              getLibraryHoursMessage(facility.name)
+            ) : (
+              <>
+                Building is currently closed
+                <br />
+                {facility.hours && facility.hours.open ? (
+                  <span>Opens {formatTime(facility.hours.open)}</span>
+                ) : (
+                  <span>Not open today</span>
+                )}
+              </>
+            )}
+          </div>
+        ) : facilityType === FacilityType.LIBRARY ? (
+          <LibraryRoomsAccordion
+            facility={facility}
+            expandedItems={expandedItems}
+            toggleItem={toggleItem}
+            accordionRefs={accordionRefs}
+            idPrefix={idPrefix}
+          />
+        ) : (
+          <AcademicRoomsAccordion
+            facility={facility}
+            expandedItems={expandedItems}
+            toggleItem={toggleItem}
+            accordionRefs={accordionRefs}
+            idPrefix={idPrefix}
+          />
+        )}
+      </AccordionContent>
+    </AccordionItem>
+  );
+};
+
+interface LibraryRoomsAccordionProps {
+  facility: Facility;
+  expandedItems: string[];
+  toggleItem: (itemId: string) => void;
+  accordionRefs: React.MutableRefObject<AccordionRefs>;
+  idPrefix: string;
+}
+
+const LibraryRoomsAccordion: React.FC<LibraryRoomsAccordionProps> = ({
+  facility,
+  expandedItems,
+  toggleItem,
+  accordionRefs,
+  idPrefix,
+}) => {
+  return (
+    <Accordion type="multiple" value={expandedItems} className="w-full backdrop-blur-sm rounded-lg p-2">
+      {Object.entries(facility.rooms)
+        .sort(([nameA], [nameB]) => nameA.localeCompare(nameB)) // Sort library rooms by name
+        .map(([roomName, room]) => {
+          // We know these are library rooms since facility.type is LIBRARY
+          const libraryRoom = room as LibraryRoom;
+          const roomId = `${idPrefix}-${facility.id}-room-${roomName}`;
+          return (
+            <AccordionItem
+              value={roomId}
+              key={roomId}
+              ref={(el) => {
+                accordionRefs.current[roomId] = el; // Assign ref for potential scrolling
+              }}
+            >
+              {/* Sticky header for room name/status */}
+              <div className="sticky top-0 bg-background/90 backdrop-blur-sm z-5 border-b border-border/10">
+                <AccordionTrigger
+                  onClick={() => toggleItem(roomId)}
+                  className="px-4 py-2 hover:no-underline hover:bg-muted/20 text-sm transition-colors"
+                >
+                  <div className="flex items-center justify-between flex-1 mr-2">
+                    <div className="flex flex-col items-start text-left">
+                      <span className="font-medium">{roomName}</span>
+                      {getRoomAvailabilityMessage(libraryRoom)}
+                    </div>
+                    <RoomBadge
+                      status={room.status}
+                      availableAt={room.availableAt}
+                      availableFor={room.availableFor}
+                      facilityType={FacilityType.LIBRARY}
+                    />
+                  </div>
+                </AccordionTrigger>
+              </div>
+              <AccordionContent className="backdrop-blur-sm rounded-md mx-2 mb-2">
+                <FacilityRoomDetails
+                  roomName={roomName}
+                  room={libraryRoom}
+                  facilityType={FacilityType.LIBRARY}
+                />
+              </AccordionContent>
+            </AccordionItem>
+          );
+        })}
+    </Accordion>
+  );
+};
+
+interface AcademicRoomsAccordionProps {
+  facility: Facility;
+  expandedItems: string[];
+  toggleItem: (itemId: string) => void;
+  accordionRefs: React.MutableRefObject<AccordionRefs>;
+  idPrefix: string;
+}
+
+// --- Helper components for brief room status in trigger ---
+const RoomAvailabilityDetails: React.FC<{ room: AcademicRoom }> = ({
+  room,
+}) => (
+  <div className="text-xs text-muted-foreground space-y-0.5 mt-0.5">
+    {room.status === RoomStatus.PASSING_PERIOD && room.nextClass ? (
+      <p>
+        <span className="font-medium text-foreground/70">Status:</span> Passing
+        Period
+      </p>
+    ) : (
+      <>
+        {room.availableFor && (
+          <p>
+            <span className="font-medium text-foreground/70">
+              Available for:
+            </span>{" "}
+            {formatDuration(room.availableFor)}
+          </p>
+        )}
+        {room.availableUntil && (
+          <p>
+            <span className="font-medium text-foreground/70">Until:</span>{" "}
+            {formatTime(room.availableUntil)}
+          </p>
+        )}
+      </>
+    )}
+    {room.nextClass && (
+      <p>
+        <span className="font-medium text-foreground/70">Next:</span>{" "}
+        {room.nextClass.course} - {room.nextClass.title}
+      </p>
+    )}
+  </div>
+);
+
+const RoomOccupancyDetails: React.FC<{ room: AcademicRoom }> = ({ room }) => (
+  <div className="text-xs space-y-0.5 mt-0.5">
+    {room.currentClass && (
+      <p>
+        <span className="font-medium text-foreground/70">Current:</span>{" "}
+        <span className="font-normal text-muted-foreground">
+          {room.currentClass.course} - {room.currentClass.title}
+        </span>
+      </p>
+    )}
+    {room.availableAt && (
+      <p>
+        <span className="font-medium text-foreground/70">Available at:</span>{" "}
+        <span className="font-normal text-muted-foreground">
+          {formatTime(room.availableAt)}
+          {room.availableFor && ` for ${formatDuration(room.availableFor)}`}
+        </span>
+      </p>
+    )}
+  </div>
+);
+
+const AcademicRoomsAccordion: React.FC<AcademicRoomsAccordionProps> = ({
+  facility,
+  expandedItems,
+  toggleItem,
+  accordionRefs, // Refs might need adjustment for deep nesting if scrolling to specific room is needed
+  idPrefix,
+}) => {
+  // Filter available and occupied rooms
+  const availableRooms = useMemo(
+    () =>
+      Object.entries(facility.rooms)
+        .filter(
+          ([, room]) =>
+            room.status === RoomStatus.AVAILABLE ||
+            room.status === RoomStatus.PASSING_PERIOD,
+        )
+        .sort(([numA], [numB]) =>
+          numA.localeCompare(numB, undefined, {
+            numeric: true,
+            sensitivity: "base",
+          }),
+        ),
+    [facility.rooms],
+  );
+
+  const occupiedRooms = useMemo(
+    () =>
+      Object.entries(facility.rooms)
+        .filter(
+          ([, room]) =>
+            room.status === RoomStatus.OCCUPIED ||
+            room.status === RoomStatus.OPENING_SOON,
+        )
+        .sort(([numA], [numB]) =>
+          numA.localeCompare(numB, undefined, {
+            numeric: true,
+            sensitivity: "base",
+          }),
+        ),
+    [facility.rooms],
+  );
+
+  // Function to render the list of rooms within a status group
+  const renderRoomList = (
+    rooms: [string, FacilityRoom][],
+    statusType: "available" | "occupied",
+  ) => {
+    return (
+      <div className="pl-4 pr-1 py-1 space-y-1">
+        {" "}
+        {/* Indent room list */}
+        {rooms.map(([roomNumber, room]) => {
+          const academicRoom = room as AcademicRoom;
+          const roomAccordionId = `${idPrefix}-${facility.id}-${statusType}-room-${roomNumber}`;
+          const isRoomExpanded = expandedItems.includes(roomAccordionId);
+
+          return (
+            // Nest Accordion for each room
+            <Accordion
+              key={roomAccordionId}
+              type="multiple"
+              value={expandedItems}
+              className="w-full border-b border-border/20 last:border-b-0 backdrop-blur-sm rounded-md"
+            >
+              <AccordionItem value={roomAccordionId} className="border-b-0">
+                <AccordionTrigger
+                  onClick={() => toggleItem(roomAccordionId)}
+                  className="py-2 px-2 text-sm hover:no-underline hover:bg-muted/10 rounded-md group [&[data-state=open]>svg]:text-primary transition-colors"
+                >
+                  {/* Room details for the trigger */}
+                  <div className="flex justify-between items-center w-full mr-2 text-left">
+                    <div className="flex flex-col">
+                      <span className="font-medium">{roomNumber}</span>
+                      {/* Display brief status details */}
+                      {statusType === "available" ? (
+                        <RoomAvailabilityDetails room={academicRoom} />
+                      ) : (
+                        <RoomOccupancyDetails room={academicRoom} />
+                      )}
+                    </div>
+                    <RoomBadge
+                      status={academicRoom.status}
+                      facilityType={FacilityType.ACADEMIC}
+                    />
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-0 pb-1 pl-1 pr-4">
+                  {/* Conditionally render loader only when this specific room is expanded */}
+                  {isRoomExpanded ? (
+                    <AcademicRoomDetailLoader
+                      buildingId={facility.name} // Use facility name as ID for API call
+                      roomNumber={roomNumber}
+                    />
+                  ) : (
+                    // Placeholder so content area doesn't collapse instantly
+                    <div className="h-10"></div>
+                  )}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          );
+        })}
+      </div>
+    );
+  };
+
+  // Main return uses the Available/Occupied groups
+  return (
+    <Accordion type="multiple" value={expandedItems} className="w-full backdrop-blur-sm rounded-lg p-2">
+      {/* Available Rooms Section */}
+      <AccordionItem
+        value={`${idPrefix}-${facility.id}-available`}
+        ref={(el) => {
+          accordionRefs.current[`${idPrefix}-${facility.id}-available`] = el;
+        }}
+      >
+        <AccordionTrigger
+          onClick={() => toggleItem(`${idPrefix}-${facility.id}-available`)}
+          className="px-4 py-2 hover:no-underline hover:bg-muted/20 text-sm transition-colors"
+        >
+          Available Rooms ({availableRooms.length})
+        </AccordionTrigger>
+        <AccordionContent className="p-0">
+          {availableRooms.length > 0 ? (
+            renderRoomList(availableRooms, "available")
+          ) : (
+            <p className="px-4 py-3 text-sm text-muted-foreground">
+              No rooms currently available.
+            </p>
+          )}
+        </AccordionContent>
+      </AccordionItem>
+
+      {/* Occupied Rooms Section */}
+      <AccordionItem
+        value={`${idPrefix}-${facility.id}-occupied`}
+        ref={(el) => {
+          accordionRefs.current[`${idPrefix}-${facility.id}-occupied`] = el;
+        }}
+      >
+        <AccordionTrigger
+          onClick={() => toggleItem(`${idPrefix}-${facility.id}-occupied`)}
+          className="px-4 py-2 hover:no-underline hover:bg-muted/20 text-sm transition-colors"
+        >
+          Occupied Rooms ({occupiedRooms.length})
+        </AccordionTrigger>
+        <AccordionContent className="p-0">
+          {occupiedRooms.length > 0 ? (
+            renderRoomList(occupiedRooms, "occupied")
+          ) : (
+            <p className="px-4 py-3 text-sm text-muted-foreground">
+              No rooms currently occupied.
+            </p>
+          )}
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+};
+
+export default FacilityAccordion;

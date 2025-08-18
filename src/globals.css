@@ -1,0 +1,45 @@
+
+@layer base {
+  :root {
+    --sidebar-background: 240 3% 16%;
+    --sidebar-foreground: 220 13% 91%;
+    --sidebar-primary: 203 84% 64%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3% 20%;
+    --sidebar-accent-foreground: 220 13% 91%;
+    --sidebar-border: 240 3% 25%;
+    --sidebar-ring: 203 84% 64%
+  }
+  .dark {
+    --sidebar-background: 240 3% 16%;
+    --sidebar-foreground: 220 13% 91%;
+    --sidebar-primary: 203 84% 64%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3% 20%;
+    --sidebar-accent-foreground: 220 13% 91%;
+    --sidebar-border: 240 3% 25%;
+    --sidebar-ring: 203 84% 64%
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.maplibregl-popup.popup-dark .maplibregl-popup-content {
+  background-color: #27272a !important;
+  color: white !important;
+  border-radius: 6px;
+  padding: 6px 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.maplibregl-popup.popup-dark .maplibregl-popup-tip {
+  border-top-color: #27272a !important;
+  border-bottom-color: #27272a !important;
+}
