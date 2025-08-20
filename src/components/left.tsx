@@ -22,6 +22,7 @@ import { Facility, FacilityStatus, FacilityType, AccordionRefs } from "@/types";
 import {
   Map as MapIcon,
   TriangleAlert,
+  Info,
   Search,
   LoaderPinwheel,
 } from "lucide-react";
@@ -185,26 +186,26 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({
                       className="h-8 w-8 rounded-full border-2 border-foreground/20"
                       aria-label="Important notes about room availability"
                     >
-                      <TriangleAlert size={12} />
+                      <Info size={12} />
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-80">
                     <div className="text-sm space-y-2">
-                      <p className="font-medium">Important Notes:</p>
+                      <p className="font-medium"><i>Some Notes</i></p>
                       <ul className="list-disc pl-4 space-y-1">
                         <li>
-                          Building/room access may be restricted to specific
-                          colleges or departments
+                          Building/room access may be restricted to specific departments.
                         </li>
                         <li>
-                          Displayed availability only reflects official class
-                          schedules and events
+                          The availability displayed only showcases official class
+                          schedules and events–the room may be occupied by
+                          unofficial meetings or study groups.
                         </li>
                         <li>
-                          Rooms may be occupied by unofficial meetings or study
-                          groups
+                          Some facilities may not be available during weekends or holidays.
                         </li>
-                        <li>Different schedules may apply during exam periods</li>
+                        <li>Different schedules may apply during exam periods.</li>
+                        <li>If there are any issues with the app, please email me (advayb2018 [at] gmail.com).</li>
                       </ul>
                     </div>
                   </PopoverContent>

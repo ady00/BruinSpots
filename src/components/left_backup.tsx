@@ -24,6 +24,7 @@ import {
   TriangleAlert,
   Search,
   LoaderPinwheel,
+  Info
 } from "lucide-react";
 import FacilityAccordion from "@/components/FacilityAccordion";
 import DateTimeButton from "@/components/DateTimeButton";
@@ -194,7 +195,7 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({
                       className="h-8 w-8 rounded-full border-2 border-foreground/20"
                       aria-label="Important notes about room availability"
                     >
-                      <TriangleAlert size={12} />
+                      <Info size={12} />
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-80">
