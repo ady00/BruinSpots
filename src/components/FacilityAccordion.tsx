@@ -257,7 +257,7 @@ const RoomAvailabilityDetails: React.FC<{ room: AcademicRoom }> = ({
     {room.nextClass && (
       <p>
         <span className="font-medium text-foreground/70">Next:</span>{" "}
-        {room.nextClass.course} - {room.nextClass.title}
+        {room.nextClass.course} 
       </p>
     )}
   </div>
@@ -269,7 +269,7 @@ const RoomOccupancyDetails: React.FC<{ room: AcademicRoom }> = ({ room }) => (
       <p>
         <span className="font-medium text-foreground/70">Current:</span>{" "}
         <span className="font-normal text-muted-foreground">
-          {room.currentClass.course} - {room.currentClass.title}
+          {room.currentClass.course}
         </span>
       </p>
     )}
