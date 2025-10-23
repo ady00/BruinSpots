@@ -194,18 +194,22 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({
                       <p className="font-medium"><i>Some Notes</i></p>
                       <ul className="list-disc pl-4 space-y-1">
                         <li>
-                          Building/room access may be restricted to specific departments.
-                        </li>
-                        <li>
                           The availability displayed only showcases official class
                           schedules and events–the room may be occupied by
                           unofficial meetings or study groups.
                         </li>
                         <li>
-                          Some facilities may not be available during weekends or holidays.
+                          The UCLA schedule of classes only displays classroom hours from 8AM to 6PM. BruinSpots will not work for classrooms after that hour (but library rooms can still be booked).
+                          I am working on extending this in the future.
+                        </li>
+                    
+                        <li>
+                          If a room is marked as available and it is locked/busy/etc, please fill out the report issue
+                          form in the bottom right corner. Alternatively, if a classroom is empty and available but not marked 
+                          as such, please report that as well.
                         </li>
                         <li>Different schedules may apply during exam periods.</li>
-                        <li>If there are any issues with the app, please email me (advayb2018 [at] gmail.com).</li>
+                        <li>If there are any non-room issues with the app (e.g rendering/technical glitches), please email me (advayb2018 [at] gmail.com).</li>
                       </ul>
                     </div>
                   </PopoverContent>
