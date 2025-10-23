@@ -339,13 +339,41 @@ export default function FacilityMap({
 
   return (
     <div ref={mapContainer} className="w-full h-full relative">
-      <div className="absolute bottom-20 md:bottom-4 left-4 z-10 pointer-events-none py-4">
+      <div className="absolute bottom-5 md:bottom-4 left-4 z-10 pointer-events-none py-4">
         <div className="bg-background/90 backdrop-blur-sm border border-border/50 rounded-lg px-4 py-2 shadow-lg">
           <h1 className="text-xl md:text-3xl font-bold">
             <span className="text-primary">Bruin</span>
             <span className="text-accent">Spots</span>
           </h1>
         </div>
+      </div>
+      
+      {/* Feedback Button */}
+      <div className="absolute bottom-5 md:bottom-10 right-4 z-10 pointer-events-auto">
+        <a
+          href="https://forms.gle/dh3xn3y5SWuKX39ZA"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center gap-1 bg-background/90 backdrop-blur-sm border border-border/50 rounded-lg px-3 py-2 shadow-lg hover:bg-background/95 transition-colors group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-foreground/70 group-hover:text-foreground"
+          >
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span className="text-[10px] text-foreground/70 group-hover:text-foreground font-medium">
+            Report Issue
+          </span>
+        </a>
       </div>
     </div>
   );
