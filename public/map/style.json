@@ -1,6 +1,8 @@
 {
-  "version": 8,
-  "metadata": { "maputnik:renderer": "mlgljs" },
+    "version": 8,
+    "metadata": {
+        "maputnik:renderer": "mlgljs"
+    },
     "sources": {
         "ne2_shaded": {
             "maxzoom": 6,
@@ -45,7 +47,6 @@
                             "type": "Point"
                         }
                     },
-                    
                     {
                         "type": "Feature",
                         "properties": {
@@ -72,7 +73,6 @@
                             "type": "Point"
                         }
                     },
-                    
                     {
                         "type": "Feature",
                         "properties": {
@@ -100,439 +100,704 @@
                         }
                     },
                     {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Music Library"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44039179583316,
-                                        34.070959487193676
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 26
-                                    },
-                        {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Boelter Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44318378378262,
-                                        34.06859884356142
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 0
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Broad Art Center"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44114213052333,
-                                        34.075818689697826
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 1
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Bunche Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44058168266878,
-                                        34.07443212621638
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 2
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Center for the Health Sciences"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44344615572518,
-                                        34.065686667720016
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 3
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Dodd Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.43940089167393,
-                                        34.07249454836705
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 4
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Engineering IV"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.4441007943033,
-                                        34.068807620310736
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 5
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Factor Health Sciences Building"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44211742159085,
-                                        34.06675946005444
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 6
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Fowler Museum"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44332564474611,
-                                        34.072962147686184
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 7
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Franz Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44186094390872,
-                                        34.069619594224335
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 8
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Geology Building"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44184680462838,
-                                        34.06920776907333
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 9
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Haines Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.4411738364152,
-                                        34.07290523226514
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 10
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Kaplan Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44122676928305,
-                                        34.07148620914853
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 11
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Kaufman Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44431458583722,
-                                        34.072768933776246
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 12
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Knudsen Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44121544093878,
-                                        34.070497871661004
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 13
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "La Kretz Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44277363598283,
-                                        34.067573796122716
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 14
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Life Sciences"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44249612525206,
-                                        34.06723443704951
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 15
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Law Building"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.43864649837676,
-                                        34.073076985386365
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 16
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Macgowan Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.43983364747129,
-                                        34.07560474086145
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 17
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Mathematical Sciences"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.4429194945819,
-                                        34.069491021896226
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 18
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Melnitz Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44001802303134,
-                                        34.07653746827911
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 19
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Moore Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44263769682692,
-                                        34.07054328314263
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 20
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Physics and Astronomy Building"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44158559255231,
-                                        34.070788582982985
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 21
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Pritzker Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44077761710798,
-                                        34.06951169080803
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 22
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Public Affairs Building"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.43919167732204,
-                                        34.074280870380335
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 23
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Rolfe Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44186541767779,
-                                        34.07399487833736
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 24
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Royce Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44221081748505,
-                                        34.07272670585003
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 25
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Schoenberg Music Building"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44014108689012,
-                                        34.07078140284733
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 26
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "School of Public Health"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.4436342770494,
-                                        34.06678029159008
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 27
-                                    },
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "name": "Young Hall"
-                                    },
-                                    "geometry": {
-                                        "coordinates": [
-                                        -118.44136663724176,
-                                        34.06856759172747
-                                        ],
-                                        "type": "Point"
-                                    },
-                                    "id": 28
-                                    },
-                                    {
-                                        "type": "Feature",
-                                        "properties": {
-                                        "name": "Powell Library"
-                                        },
-                                        "geometry": {
-                                            "coordinates": [
-                                                -118.4421709044893,
-                                                34.07160565885317
-                                            ],
-                                            "type": "Point"
-                                        }
-                                    }
-
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Music Library"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44039179583316,
+                                34.070959487193676
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 26
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Boelter Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44318378378262,
+                                34.06859884356142
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 0
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Broad Art Center"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44114213052333,
+                                34.075818689697826
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 1
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Bunche Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44058168266878,
+                                34.07443212621638
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 2
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Center for the Health Sciences"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44344615572518,
+                                34.065686667720016
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 3
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Dodd Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.43940089167393,
+                                34.07249454836705
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 4
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Engineering IV"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.4441007943033,
+                                34.068807620310736
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 5
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Factor Health Sciences Building"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44211742159085,
+                                34.06675946005444
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 6
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Fowler Museum"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44332564474611,
+                                34.072962147686184
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 7
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Franz Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44186094390872,
+                                34.069619594224335
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 8
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Geology Building"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44184680462838,
+                                34.06920776907333
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 9
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Haines Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.4411738364152,
+                                34.07290523226514
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 10
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Kaplan Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44122676928305,
+                                34.07148620914853
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 11
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Kaufman Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44431458583722,
+                                34.072768933776246
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 12
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Knudsen Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44121544093878,
+                                34.070497871661004
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 13
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "La Kretz Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44277363598283,
+                                34.067573796122716
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 14
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Life Sciences"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44249612525206,
+                                34.06723443704951
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 15
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Law Building"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.43864649837676,
+                                34.073076985386365
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 16
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Macgowan Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.43983364747129,
+                                34.07560474086145
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 17
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Mathematical Sciences"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.4429194945819,
+                                34.069491021896226
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 18
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Melnitz Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44001802303134,
+                                34.07653746827911
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 19
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Moore Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44263769682692,
+                                34.07054328314263
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 20
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Physics and Astronomy Building"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44158559255231,
+                                34.070788582982985
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 21
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Pritzker Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44077761710798,
+                                34.06951169080803
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 22
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Public Affairs Building"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.43919167732204,
+                                34.074280870380335
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 23
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Rolfe Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44186541767779,
+                                34.07399487833736
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 24
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Royce Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44221081748505,
+                                34.07272670585003
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 25
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Schoenberg Music Building"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44014108689012,
+                                34.07078140284733
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 26
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "School of Public Health"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.4436342770494,
+                                34.06678029159008
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 27
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Young Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44136663724176,
+                                34.06856759172747
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 28
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Powell Library"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.4421709044893,
+                                34.07160565885317
+                            ],
+                            "type": "Point"
+                        }
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Botany Building"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44114062597181,
+                                34.06680673841453
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 30
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Boyer Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44176262968827,
+                                34.06810927513317
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 31
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Campbell Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44131637132281,
+                                34.07380809122709
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 32
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Collins Center"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.4444450366752,
+                                34.073524537049366
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 33
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Covel Commons"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.4499854543349,
+                                34.07301001895395
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 34
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "De Neve Plaza"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.45018979305053,
+                                34.07075273156329
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 35
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "East Melnitz"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.43937556915694,
+                                34.076424030556964
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 36
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Engineering V"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44377338306242,
+                                34.06950190219317
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 37
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Entrepreneur Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44334502930414,
+                                34.073634519664125
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 38
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Gold Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44389561153092,
+                                34.07363362505488
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 39
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Gonda Center"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44473731896474,
+                                34.0673688481738
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 40
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Kinsey Pavilion"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44130239987123,
+                                34.07014900368222
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 41
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "La Kretz Garden Pavilion"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.4415482441344,
+                                34.06676045336512
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 42
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Macgowan East"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.43932390816255,
+                                34.076119502484545
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 43
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Molecular Sciences"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44088065126223,
+                                34.06815833193802
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 44
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Olympic Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.45339087828066,
+                                34.072449577224674
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 45
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Ostin Music Center"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44056582464631,
+                                34.07053069282084
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 46
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Perloff Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44021429877691,
+                                34.073165866053955
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 47
+                    },
+                    {
+                        "type": "Feature",
+                        "properties": {
+                            "name": "Slichter Hall"
+                        },
+                        "geometry": {
+                            "coordinates": [
+                                -118.44078944945953,
+                                34.068868486331255
+                            ],
+                            "type": "Point"
+                        },
+                        "id": 48
+                    }
                 ]
             }
         }
