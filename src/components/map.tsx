@@ -347,8 +347,6 @@ export default function FacilityMap({
           </h1>
         </div>
       </div>
-      
-      {/* Feedback Button */}
       <div className="absolute bottom-5 md:bottom-10 right-4 z-10 pointer-events-auto">
         <a
           href="https://forms.gle/dh3xn3y5SWuKX39ZA"
