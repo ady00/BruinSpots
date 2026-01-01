@@ -193,6 +193,7 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({
                     <div className="text-sm space-y-2">
                       <p className="font-medium"><i>Some Notes</i></p>
                       <ul className="list-disc pl-4 space-y-1">
+                        
                         <li>
                           The availability displayed only showcases official class
                           schedules and events–the room may be occupied by

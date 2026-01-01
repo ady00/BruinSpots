@@ -23,6 +23,62 @@ import {
 import { isLibraryOpen, LIBRARY_HOURS } from "@/utils/libraryHours";
 import * as cheerio from "cheerio";
 
+// Mapping from database abbreviations to full building names
+const BUILDING_NAME_MAP: Record<string, string> = {
+  "BOELTER": "Boelter Hall",
+  "BOTANY": "Botany Building",
+  "BOYER": "Boyer Hall",
+  "BROAD": "Broad Art Center",
+  "BUNCHE": "Bunche Hall",
+  "CAMPBEL": "Campbell Hall",
+  "COLLINS": "Collins Center",
+  "COVEL": "Covel Commons",
+  "DE NEVE": "De Neve Plaza",
+  "DODD": "Dodd Hall",
+  "E MLNTZ": "East Melnitz",
+  "ENGR IV": "Engineering IV",
+  "ENGR V": "Engineering V",
+  "ENTRPNR": "Entrepreneur Hall",
+  "FACTOR": "Factor Health Sciences",
+  "FOWLER": "Fowler Museum",
+  "FRANZ": "Franz Hall",
+  "GEOLOGY": "Geology Building",
+  "GOLD": "Gold Hall",
+  "GONDA": "Gonda Center",
+  "HAINES": "Haines Hall",
+  "HLTHSCI": "Health Sciences",
+  "KAPLAN": "Kaplan Hall",
+  "KAUFMAN": "Kaufman Hall",
+  "KNSY PV": "Kinsey Pavilion",
+  "KNUDSEN": "Knudsen Hall",
+  "LAKRETZ": "La Kretz Hall",
+  "LKGP": "La Kretz Garden Pavilion",
+  "LS": "Life Sciences",
+  "MACGOWN": "Macgowan Hall",
+  "MCGWN E": "Macgowan East",
+  "MELNITZ": "Melnitz Hall",
+  "MOL SCI": "Molecular Sciences",
+  "MOORE": "Moore Hall",
+  "MS": "Math Sciences",
+  "OLYMPIC": "Olympic Hall",
+  "OSTIN": "Ostin Music Center",
+  "PAB": "Physics & Astronomy",
+  "PERLOFF": "Perloff Hall",
+  "PRITZKER": "Pritzker Hall",
+  "PUB AFF": "Public Affairs",
+  "PUB HLT": "Public Health",
+  "ROLFE": "Rolfe Hall",
+  "ROYCE": "Royce Hall",
+  "SAC": "Student Activities Center",
+  "SLICHTR": "Slichter Hall",
+  "SMB": "Schoenberg Music",
+  "WGYOUNG": "Young Hall",
+};
+
+function getBuildingDisplayName(abbreviation: string): string {
+  return BUILDING_NAME_MAP[abbreviation] || abbreviation;
+}
+
 type StudyRoomUCLA = {
   id: string;
   title: string;
@@ -656,7 +712,7 @@ async function fetchAcademicBuildingData(
 
         const academicFacility: Facility = {
           id,
-          name: building.name,
+          name: getBuildingDisplayName(building.name),
           type: FacilityType.ACADEMIC,
           coordinates: building.coordinates,
           hours: building.hours, // These hours are for the *day*
