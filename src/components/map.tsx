@@ -15,6 +15,12 @@ export default function FacilityMap({
   const DEFAULT_PITCH = 25;
   const DEFAULT_BEARING = 0;
 
+  // Restrict map bounds to ~2.5 miles from UCLA campus center
+  const MAX_BOUNDS: [[number, number], [number, number]] = [
+    [-118.45798216340374, 34.06194193155588], // Southwest corner
+    [-118.4253506848074, 34.084250722883795], // Northeast corner
+  ];
+
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
   
   const handleMarkerClick = useCallback(
@@ -46,6 +52,7 @@ export default function FacilityMap({
       bearing: DEFAULT_BEARING,
       antialias: true,
       minZoom: 15.2,
+      maxBounds: MAX_BOUNDS,
       attributionControl: false,
     });
 
