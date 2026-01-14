@@ -89,7 +89,21 @@ export async function GET(request: Request) {
       ? data
       : [];
 
+    // End of day for schedules (10 PM)
+    const endOfDayTime = "22:00:00";
+
+    // If no scheduled classes/events, return a single "available" block for the rest of the day
     if (fullDaySchedule.length === 0) {
+      // Only return available block if we haven't passed end of day
+      if (flooredTargetTimeStr < endOfDayTime) {
+        const availableBlock: RoomScheduleBlock = {
+          start: flooredTargetTimeStr,
+          end: endOfDayTime,
+          status: "available",
+          details: null,
+        };
+        return NextResponse.json([availableBlock]);
+      }
       return NextResponse.json([]);
     }
 
@@ -134,8 +148,18 @@ export async function GET(request: Request) {
           start: flooredTargetTimeStr, // Set start to the floored time
         };
       }
+    } else {
+      // All scheduled blocks have passed - return available block for rest of day
+      if (flooredTargetTimeStr < endOfDayTime) {
+        const availableBlock: RoomScheduleBlock = {
+          start: flooredTargetTimeStr,
+          end: endOfDayTime,
+          status: "available",
+          details: null,
+        };
+        return NextResponse.json([availableBlock]);
+      }
     }
-    // If firstRelevantIndex is -1, relevantSchedule remains empty
 
     return NextResponse.json(relevantSchedule);
   } catch (error: unknown) {

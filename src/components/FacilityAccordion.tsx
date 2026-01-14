@@ -375,7 +375,7 @@ const AcademicRoomsAccordion: React.FC<AcademicRoomsAccordionProps> = ({
                   {/* Conditionally render loader only when this specific room is expanded */}
                   {isRoomExpanded ? (
                     <AcademicRoomDetailLoader
-                      buildingId={facility.name} // Use facility name as ID for API call
+                      buildingId={facility.id} // Use facility.id (database name like "KAPLAN")
                       roomNumber={roomNumber}
                     />
                   ) : (
