@@ -4,6 +4,7 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import maplibregl from "maplibre-gl";
 import { MarkerData, MapProps, FacilityType } from "@/types";
 import { formatTime } from "@/utils/format";
+import NearbyBuildings from "@/components/NearbyBuildings";
 
 export default function FacilityMap({
   facilityData,
@@ -15,7 +16,7 @@ export default function FacilityMap({
   const DEFAULT_PITCH = 25;
   const DEFAULT_BEARING = 0;
 
-  // Restrict map bounds to ~2.5 miles from UCLA campus center
+  // NOTE:CHANGE MAP BOUNDS HERE.
   const MAX_BOUNDS: [[number, number], [number, number]] = [
     [-118.45798216340374, 34.06194193155588], // Southwest corner
     [-118.4253506848074, 34.084250722883795], // Northeast corner
@@ -36,6 +37,7 @@ export default function FacilityMap({
     Map<string, { marker: maplibregl.Marker; data: MarkerData }>
   >(new Map());
   const activePopupRef = useRef<maplibregl.Popup | null>(null);
+  const userMarkerRef = useRef<maplibregl.Marker | null>(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
   useEffect(() => {
@@ -332,16 +334,21 @@ export default function FacilityMap({
     };
   }, [facilityData, handleMarkerClick, isMapLoaded]);
 
-  // Add user location marker when location is available
+  // Add/update user location marker when location is available
   useEffect(() => {
     if (!map.current || !isMapLoaded || !userLocation) return;
 
-    const userMarkerEl = document.createElement("div");
-    userMarkerEl.className = "h-3.5 w-3.5 border-[1.5px] border-zinc-50 rounded-full bg-blue-400 shadow-[0px_0px_4px_2px_rgba(14,165,233,1)]";
+    // Update existing marker position or create new one
+    if (userMarkerRef.current) {
+      userMarkerRef.current.setLngLat(userLocation);
+    } else {
+      const userMarkerEl = document.createElement("div");
+      userMarkerEl.className = "h-3.5 w-3.5 border-[1.5px] border-zinc-50 rounded-full bg-blue-400 shadow-[0px_0px_4px_2px_rgba(14,165,233,1)]";
 
-    new maplibregl.Marker({ element: userMarkerEl })
-      .setLngLat(userLocation)
-      .addTo(map.current);
+      userMarkerRef.current = new maplibregl.Marker({ element: userMarkerEl })
+        .setLngLat(userLocation)
+        .addTo(map.current);
+    }
   }, [userLocation, isMapLoaded]);
 
   return (
@@ -354,7 +361,12 @@ export default function FacilityMap({
           </h1>
         </div>
       </div>
-      <div className="absolute bottom-5 md:bottom-10 right-4 z-10 pointer-events-auto">
+      <div className="absolute bottom-5 md:bottom-10 right-4 z-10 pointer-events-auto flex flex-col items-end gap-2">
+        <NearbyBuildings
+          userLocation={userLocation}
+          facilityData={facilityData}
+          onBuildingClick={handleMarkerClick}
+        />
         <a
           href="https://forms.gle/dh3xn3y5SWuKX39ZA"
           target="_blank"
