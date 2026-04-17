@@ -210,7 +210,7 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({
                           as such, please report that as well.
                         </li>
                         <li>Different schedules may apply during exam periods.</li>
-                        <li>If there are any non-room issues with the app (e.g rendering/technical glitches), please email me (advayb2018 [at] gmail.com).</li>
+                        <li>If there are any non-room issues with the app (e.g rendering/technical glitches), please FILL OUT <u><a href = "https://forms.gle/dh3xn3y5SWuKX39ZA">THIS FORM</a></u>.</li>
                       </ul>
                     </div>
                   </PopoverContent>
