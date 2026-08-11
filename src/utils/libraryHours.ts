@@ -11,52 +11,23 @@ export interface LibraryHours {
   };
 }
 
+const OPEN_24_HOURS: LibraryHours[string] = {
+  Monday: { open: "00:00", close: "00:00", nextDay: true },
+  Tuesday: { open: "00:00", close: "00:00", nextDay: true },
+  Wednesday: { open: "00:00", close: "00:00", nextDay: true },
+  Thursday: { open: "00:00", close: "00:00", nextDay: true },
+  Friday: { open: "00:00", close: "00:00", nextDay: true },
+  Saturday: { open: "00:00", close: "00:00", nextDay: true },
+  Sunday: { open: "00:00", close: "00:00", nextDay: true },
+};
+
+// Stopgap: all libraries treated as open 24/7 until real per-term hours are added.
 export const LIBRARY_HOURS: LibraryHours = {
-  "Powell Library": {
-    Monday: { open: "09:15", close: "21:30" },
-    Tuesday: { open: "09:15", close: "21:30" },
-    Wednesday: { open: "09:15", close: "22:30" },
-    Thursday: { open: "09:15", close: "21:30" },
-    Friday: { open: "09:15", close: "17:30" },
-    Saturday: { open: "13:15", close: "16:30" },
-    Sunday: { open: "13:15", close: "21:30" },
-  },
-  "Young Research Library": {
-    Monday: { open: "09:15", close: "21:30" },
-    Tuesday: { open: "09:15", close: "21:30" },
-    Wednesday: { open: "09:15", close: "22:30" },
-    Thursday: { open: "09:15", close: "21:30" },
-    Friday: { open: "09:15", close: "17:30" },
-    Saturday: { open: "13:15", close: "16:30" },
-    Sunday: { open: "13:15", close: "21:30" },
-  },
-  "Music Library": {
-    Monday: { open: "09:15", close: "21:30" },
-    Tuesday: { open: "09:15", close: "21:30" },
-    Wednesday: { open: "09:15", close: "22:30" },
-    Thursday: { open: "09:15", close: "21:30" },
-    Friday: { open: "09:15", close: "17:30" },
-    Saturday: { open: "13:15", close: "16:30" },
-    Sunday: { open: "13:15", close: "21:30" },
-  },
-  "Biomedical Library": {
-    Monday: { open: "09:15", close: "21:30" },
-    Tuesday: { open: "09:15", close: "21:30" },
-    Wednesday: { open: "09:15", close: "22:30" },
-    Thursday: { open: "09:15", close: "21:30" },
-    Friday: { open: "09:15", close: "17:30" },
-    Saturday: { open: "13:15", close: "16:30" },
-    Sunday: { open: "13:15", close: "21:30" },
-  },
-  "Science and Engineering Library": {
-    Monday: { open: "09:15", close: "21:30" },
-    Tuesday: { open: "09:15", close: "21:30" },
-    Wednesday: { open: "09:15", close: "22:30" },
-    Thursday: { open: "09:15", close: "21:30" },
-    Friday: { open: "09:15", close: "17:30" },
-    Saturday: { open: "13:15", close: "16:30" },
-    Sunday: { open: "13:15", close: "21:30" },
-  },
+  "Powell Library": { ...OPEN_24_HOURS },
+  "Young Research Library": { ...OPEN_24_HOURS },
+  "Music Library": { ...OPEN_24_HOURS },
+  "Biomedical Library": { ...OPEN_24_HOURS },
+  "Science and Engineering Library": { ...OPEN_24_HOURS },
 };
 
 /**
